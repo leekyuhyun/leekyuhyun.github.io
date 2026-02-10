@@ -14,9 +14,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
-  if (!post) return { title: "Post Not Found" };
+  if (!post) return { title: "글을 찾을 수 없습니다" };
   return {
-    title: `${post.title} | Kyuhyun Lee`,
+    title: `${post.title} | 이규현`,
     description: post.excerpt,
   };
 }
@@ -37,7 +37,7 @@ export default async function BlogPostPage({
         {/* Breadcrumb */}
         <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
           <Link href="/blog" className="hover:text-primary transition-colors">
-            Blog
+            {"블로그"}
           </Link>
           <ChevronRightIcon className="h-3.5 w-3.5" />
           <span className="truncate text-foreground">{post.title}</span>
@@ -55,7 +55,7 @@ export default async function BlogPostPage({
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-secondary px-2.5 py-0.5 text-xs font-medium text-primary"
+                className="rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground"
               >
                 {tag}
               </span>
@@ -92,7 +92,7 @@ export default async function BlogPostPage({
               return (
                 <pre
                   key={i}
-                  className="my-4 overflow-x-auto rounded-lg bg-muted p-4 text-sm leading-relaxed text-foreground"
+                  className="my-4 overflow-x-auto rounded-xl bg-muted p-4 text-sm leading-relaxed text-foreground"
                 >
                   <code className="font-mono">{code}</code>
                 </pre>
@@ -123,13 +123,13 @@ export default async function BlogPostPage({
         </div>
 
         {/* Back link */}
-        <div className="mt-16 border-t border-border pt-8">
+        <div className="mt-16 border-t border-border/60 pt-8">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
           >
             <ArrowLeftIcon className="h-4 w-4" />
-            Back to all posts
+            {"모든 글 보기"}
           </Link>
         </div>
       </div>

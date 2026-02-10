@@ -5,7 +5,7 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/30 hover:shadow-md hover:shadow-primary/5"
+      className="group flex flex-col gap-3 rounded-2xl border border-border/60 bg-card p-6 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
     >
       <div className="flex items-center justify-between">
         <FolderIcon className="h-5 w-5 text-primary" />
@@ -21,7 +21,7 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-md bg-secondary px-2 py-0.5 text-xs font-medium text-primary"
+            className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground"
           >
             {tag}
           </span>
@@ -38,7 +38,7 @@ function FolderIcon({ className }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}

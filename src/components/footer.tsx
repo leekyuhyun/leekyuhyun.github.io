@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border/60 bg-muted/30">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-8 md:flex-row">
         <p className="text-sm text-muted-foreground">
-          {"© 2026 Kyuhyun Lee. All rights reserved."}
+          {"© 2026 이규현. All rights reserved."}
         </p>
         <div className="flex items-center gap-5">
           <Link
@@ -20,7 +20,7 @@ export function Footer() {
           <Link
             href="mailto:hello@example.com"
             className="text-muted-foreground transition-colors hover:text-primary"
-            aria-label="Email"
+            aria-label="이메일"
           >
             <MailIcon className="h-5 w-5" />
           </Link>

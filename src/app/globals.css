@@ -1,39 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fbff;
-  --foreground: #1a2332;
-  --primary: #38a3f1;
+  --background: #ffffff;
+  --foreground: #334155;
+  --primary: #7ec8e3;
   --primary-foreground: #ffffff;
-  --secondary: #e8f4fd;
-  --secondary-foreground: #1a2332;
-  --muted: #f0f6fc;
-  --muted-foreground: #5a6e82;
-  --accent: #dceefb;
-  --accent-foreground: #1a2332;
-  --border: #d0e3f2;
+  --secondary: #f0f8ff;
+  --secondary-foreground: #475569;
+  --muted: #f8fbff;
+  --muted-foreground: #94a3b8;
+  --accent: #e0f2fe;
+  --accent-foreground: #475569;
+  --border: #e2ecf4;
   --card: #ffffff;
-  --card-foreground: #1a2332;
-  --ring: #38a3f1;
-  --radius: 0.625rem;
+  --card-foreground: #334155;
+  --ring: #7ec8e3;
+  --radius: 0.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0d1520;
-    --foreground: #e0eaf3;
-    --primary: #5cb8f5;
-    --primary-foreground: #0d1520;
-    --secondary: #152236;
-    --secondary-foreground: #e0eaf3;
-    --muted: #1a2a3e;
-    --muted-foreground: #8aa3bc;
-    --accent: #1e3350;
-    --accent-foreground: #e0eaf3;
-    --border: #253a52;
-    --card: #121f30;
-    --card-foreground: #e0eaf3;
-    --ring: #5cb8f5;
+    --background: #0f172a;
+    --foreground: #e2e8f0;
+    --primary: #7ec8e3;
+    --primary-foreground: #0f172a;
+    --secondary: #1e293b;
+    --secondary-foreground: #cbd5e1;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --accent: #1e3a5f;
+    --accent-foreground: #e2e8f0;
+    --border: #334155;
+    --card: #1e293b;
+    --card-foreground: #e2e8f0;
+    --ring: #7ec8e3;
   }
 }
 
@@ -53,7 +53,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-ring: var(--ring);
   --radius: var(--radius);
-  --font-sans: 'Geist', 'Geist Fallback', sans-serif;
+  --font-sans: 'Noto Sans KR', 'Geist', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
 }
 

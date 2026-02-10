@@ -14,9 +14,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  if (!project) return { title: "Project Not Found" };
+  if (!project) return { title: "프로젝트를 찾을 수 없습니다" };
   return {
-    title: `${project.title} | Kyuhyun Lee`,
+    title: `${project.title} | 이규현`,
     description: project.description,
   };
 }
@@ -40,7 +40,7 @@ export default async function ProjectDetailPage({
             href="/projects"
             className="hover:text-primary transition-colors"
           >
-            Projects
+            {"프로젝트"}
           </Link>
           <ChevronRightIcon className="h-3.5 w-3.5" />
           <span className="truncate text-foreground">{project.title}</span>
@@ -61,7 +61,7 @@ export default async function ProjectDetailPage({
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-secondary px-2.5 py-0.5 text-xs font-medium text-primary"
+                className="rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground"
               >
                 {tag}
               </span>
@@ -83,10 +83,10 @@ export default async function ProjectDetailPage({
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
             >
               <GithubIcon className="h-4 w-4" />
-              View Source
+              {"소스 코드"}
             </a>
           )}
           {project.link && (
@@ -94,22 +94,22 @@ export default async function ProjectDetailPage({
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
             >
               <ExternalLinkIcon className="h-4 w-4" />
-              Live Demo
+              {"라이브 데모"}
             </a>
           )}
         </div>
 
         {/* Back link */}
-        <div className="mt-16 border-t border-border pt-8">
+        <div className="mt-16 border-t border-border/60 pt-8">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
           >
             <ArrowLeftIcon className="h-4 w-4" />
-            Back to all projects
+            {"모든 프로젝트 보기"}
           </Link>
         </div>
       </div>
@@ -142,7 +142,7 @@ function FolderOpenIcon({ className }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
