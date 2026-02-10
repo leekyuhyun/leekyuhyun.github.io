@@ -1,50 +1,106 @@
-import Link from "next/link";
-import type { Project } from "@/lib/data";
+import Link from "next/link"
+import Image from "next/image"
+import { Clock, Calendar } from "lucide-react"
+import { calculateDuration, formatMonth } from "@/lib/date-utils"
 
-export function ProjectCard({ project }: { project: Project }) {
-  return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className="group flex flex-col gap-3 rounded-2xl border border-border/60 bg-card p-6 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
-    >
-      <div className="flex items-center justify-between">
-        <FolderIcon className="h-5 w-5 text-primary" />
-        <span className="text-xs text-muted-foreground">{project.year}</span>
-      </div>
-      <h3 className="text-base font-semibold text-card-foreground group-hover:text-primary transition-colors">
-        {project.title}
-      </h3>
-      <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2">
-        {project.description}
-      </p>
-      <div className="flex flex-wrap gap-1.5 pt-1">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </Link>
-  );
+interface ProjectCardProps {
+  title: string
+  description: string
+  image: string
+  startDate: string | Date
+  endDate?: string | Date
+  tags?: string[]
+  href: string
+  hideDate?: boolean
+  displayDate?: string
+  contribution?: string
 }
 
-function FolderIcon({ className }: { className?: string }) {
+export function ProjectCard({
+  title,
+  description,
+  image,
+  startDate,
+  endDate,
+  tags = [],
+  href,
+  hideDate = false,
+  displayDate,
+  contribution,
+}: ProjectCardProps) {
+  const durationString = calculateDuration(startDate, endDate)
+  const endDateStr = endDate ? formatMonth(endDate) : "진행 중"
+
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
-    </svg>
-  );
+    <Link href={href} className="group block">
+      <article className="overflow-hidden rounded-2xl border border-border/60 bg-card transition-all hover:shadow-lg hover:shadow-primary/5">
+        {/* Image */}
+        <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          {contribution && (
+            <span className="absolute left-3 top-3 rounded-full bg-primary/90 px-2.5 py-1 text-xs font-medium text-primary-foreground">
+              {contribution}
+            </span>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="p-4">
+          <h3 className="mb-1.5 line-clamp-1 text-base font-bold text-card-foreground transition-colors group-hover:text-primary">
+            {title}
+          </h3>
+          <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+            {description}
+          </p>
+
+          {/* Tags */}
+          {tags.length > 0 && (
+            <div className="mb-3 flex flex-wrap gap-1.5">
+              {tags.slice(0, 4).map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-accent-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+              {tags.length > 4 && (
+                <span className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                  +{tags.length - 4}
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* Date */}
+          {!hideDate && (
+            <div className="flex items-center gap-3 text-xs text-muted-foreground">
+              {displayDate ? (
+                <span className="flex items-center gap-1">
+                  <Calendar className="h-3 w-3" />
+                  {displayDate}
+                </span>
+              ) : (
+                <>
+                  <span className="flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
+                    {endDateStr}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-3 w-3" />
+                    {durationString} 소요
+                  </span>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      </article>
+    </Link>
+  )
 }

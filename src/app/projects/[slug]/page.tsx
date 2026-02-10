@@ -1,207 +1,165 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { projects } from "@/lib/data";
+import type { Metadata } from "next"
+import Link from "next/link"
+import Image from "next/image"
+import { notFound } from "next/navigation"
+import { ArrowLeft, Github, Globe } from "lucide-react"
+import { getProjectBySlug, getProjectPosts } from "@/lib/mdx"
+import { MDXRemote } from "next-mdx-remote/rsc"
+import TableOfContents from "@/components/toc"
+import { ProjectInfo } from "@/components/project-info"
+import remarkGfm from "remark-gfm"
+import rehypeSlug from "rehype-slug"
+import rehypePrettyCode from "rehype-pretty-code"
+
+const prettyCodeOptions = {
+  theme: "github-dark",
+  keepBackground: false,
+}
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  const posts = getProjectPosts()
+  return posts.map((post: { slug: string }) => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
-  if (!project) return { title: "프로젝트를 찾을 수 없습니다" };
+  const { slug } = await params
+  const { frontmatter } = getProjectBySlug(slug)
+  if (!frontmatter) return { title: "프로젝트를 찾을 수 없습니다" }
   return {
-    title: `${project.title} | 이규현`,
-    description: project.description,
-  };
+    title: `${frontmatter.title} | 이규현`,
+    description: frontmatter.description,
+  }
 }
 
 export default async function ProjectDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const { slug } = await params
+  const { frontmatter, content } = getProjectBySlug(slug)
 
-  if (!project) notFound();
+  if (!frontmatter) notFound()
 
   return (
-    <section className="py-20">
-      <div className="mx-auto max-w-3xl px-6">
-        {/* Breadcrumb */}
-        <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-          <Link
-            href="/projects"
-            className="hover:text-primary transition-colors"
-          >
-            {"프로젝트"}
-          </Link>
-          <ChevronRightIcon className="h-3.5 w-3.5" />
-          <span className="truncate text-foreground">{project.title}</span>
-        </nav>
-
-        {/* Header */}
-        <header className="mb-10 flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <FolderOpenIcon className="h-6 w-6 text-primary" />
-            <span className="text-sm text-muted-foreground">
-              {project.year}
-            </span>
+    <div className="mx-auto max-w-5xl px-6 py-12">
+      <div className="lg:grid lg:grid-cols-[1fr_200px] lg:gap-10">
+        {/* Main content */}
+        <article>
+          {/* Top bar */}
+          <div className="mb-6 flex items-center justify-between">
+            <Link
+              href="/projects"
+              className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              모든 프로젝트
+            </Link>
+            {frontmatter.github && (
+              <a
+                href={frontmatter.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border/60 px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+              >
+                <Github className="h-3.5 w-3.5" />
+                GitHub
+              </a>
+            )}
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            {project.title}
+
+          {/* Title & Description */}
+          <h1 className="mb-3 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            {frontmatter.title}
           </h1>
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
+          <p className="mb-4 text-base leading-relaxed text-muted-foreground">
+            {frontmatter.description}
+          </p>
+
+          {/* Tags */}
+          <div className="mb-6 flex flex-wrap gap-1.5">
+            {frontmatter.tags?.map((tag: string) => (
               <span
                 key={tag}
-                className="rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground"
+                className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground"
               >
                 {tag}
               </span>
             ))}
           </div>
-        </header>
 
-        {/* Description */}
-        <div className="mb-10">
-          <p className="text-base leading-relaxed text-muted-foreground">
-            {project.description}
-          </p>
-        </div>
+          {/* Thumbnail */}
+          {frontmatter.thumbnail && (
+            <div className="relative mb-8 aspect-video overflow-hidden rounded-2xl border border-border/60">
+              <Image
+                src={frontmatter.thumbnail}
+                alt={frontmatter.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
 
-        {/* Links */}
-        <div className="flex flex-wrap gap-3">
-          {project.github && (
+          {/* Demo link */}
+          {frontmatter.demo && (
             <a
-              href={project.github}
+              href={frontmatter.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+              className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
             >
-              <GithubIcon className="h-4 w-4" />
-              {"소스 코드"}
+              <Globe className="h-4 w-4" />
+              라이브 데모 보러가기
             </a>
           )}
-          {project.link && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
-            >
-              <ExternalLinkIcon className="h-4 w-4" />
-              {"라이브 데모"}
-            </a>
-          )}
-        </div>
 
-        {/* Back link */}
-        <div className="mt-16 border-t border-border/60 pt-8">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-          >
-            <ArrowLeftIcon className="h-4 w-4" />
-            {"모든 프로젝트 보기"}
-          </Link>
-        </div>
+          {/* Project Info Cards */}
+          <ProjectInfo
+            startDate={frontmatter.startDate}
+            endDate={frontmatter.endDate}
+            tags={frontmatter.tags || []}
+            type={frontmatter.type}
+          />
+
+          {/* MDX Content */}
+          <div className="prose">
+            <MDXRemote
+              source={content}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [
+                    rehypeSlug,
+                    [rehypePrettyCode, prettyCodeOptions],
+                  ],
+                },
+              }}
+            />
+          </div>
+
+          {/* Back link */}
+          <div className="mt-12 border-t border-border/60 pt-6">
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              목록으로 돌아가기
+            </Link>
+          </div>
+        </article>
+
+        {/* Sidebar TOC */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-24">
+            <TableOfContents />
+          </div>
+        </aside>
       </div>
-    </section>
-  );
-}
-
-function ChevronRightIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="m9 18 6-6-6-6" />
-    </svg>
-  );
-}
-
-function FolderOpenIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
-    </svg>
-  );
-}
-
-function GithubIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z" />
-    </svg>
-  );
-}
-
-function ExternalLinkIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M15 3h6v6" />
-      <path d="M10 14 21 3" />
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    </svg>
-  );
-}
-
-function ArrowLeftIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="m12 19-7-7 7-7" />
-      <path d="M19 12H5" />
-    </svg>
-  );
+    </div>
+  )
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
+import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
 const _notoSansKR = Noto_Sans_KR({ subsets: ["latin"] });
@@ -21,8 +21,8 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
-        <Header />
-        <main>{children}</main>
+        <Navbar />
+        <main className="min-h-[calc(100vh-160px)]">{children}</main>
         <Footer />
       </body>
     </html>

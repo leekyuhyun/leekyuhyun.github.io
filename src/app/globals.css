@@ -16,6 +16,8 @@
   --card-foreground: #334155;
   --ring: #7ec8e3;
   --radius: 0.75rem;
+  --sky-dark: #1a6b8a;
+  --code-bg: #282c34;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +36,8 @@
     --card: #1e293b;
     --card-foreground: #e2e8f0;
     --ring: #7ec8e3;
+    --sky-dark: #7ec8e3;
+    --code-bg: #1e293b;
   }
 }
 
@@ -52,6 +56,7 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-ring: var(--ring);
+  --color-sky-dark: var(--sky-dark);
   --radius: var(--radius);
   --font-sans: 'Noto Sans KR', 'Geist', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
@@ -65,4 +70,162 @@ body {
 
 * {
   border-color: var(--border);
+}
+
+html {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================
+   Prose - MDX 마크다운 스타일링
+   ========================================= */
+
+.prose {
+  max-width: none;
+  color: var(--foreground);
+}
+
+.prose p,
+.prose li,
+.prose table {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+  word-break: keep-all;
+}
+
+.prose strong,
+.prose b {
+  font-weight: 700;
+  color: var(--card-foreground);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--sky-dark);
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  scroll-margin-top: 100px;
+}
+.prose h1 { font-size: 2rem; }
+.prose h2 { font-size: 1.65rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+.prose h3 { font-size: 1.35rem; }
+.prose h4 { font-size: 1.2rem; margin-top: 2rem; }
+
+.prose blockquote {
+  background: var(--secondary);
+  border-left: 5px solid var(--primary);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+.prose blockquote p {
+  font-size: 1.1rem;
+  color: var(--secondary-foreground);
+  font-weight: 400;
+  margin: 0;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.8rem;
+  margin-bottom: 1.25rem;
+}
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.8rem;
+  margin-bottom: 1.25rem;
+}
+.prose li {
+  margin-bottom: 0.4rem;
+  padding-left: 0.4rem;
+}
+
+.prose :not(pre) > code {
+  background-color: var(--accent);
+  color: #0284c7;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.prose a:hover {
+  color: var(--sky-dark);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  display: block;
+}
+@media (min-width: 768px) {
+  .prose table { display: table; }
+}
+.prose th {
+  background-color: var(--secondary);
+  color: var(--foreground);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+}
+.prose td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  color: var(--secondary-foreground);
+  vertical-align: top;
+}
+
+.prose pre {
+  background-color: var(--code-bg) !important;
+  color: #abb2bf;
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+.prose pre code {
+  background-color: transparent !important;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  font-family: var(--font-mono);
+}
+
+.prose img {
+  border-radius: 12px;
+  margin: 1.5rem auto;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
 }
