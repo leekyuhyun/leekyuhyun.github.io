@@ -14,7 +14,7 @@ export const gaegu = localFont({
       style: "normal",
     },
     {
-      path: "./font/Gaegu-light.ttf",
+      path: "./font/Gaegu-Light.ttf",
       weight: "300",
       style: "normal",
     },
