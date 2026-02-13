@@ -1,6 +1,7 @@
 import Profile from "@/components/introduce/Profile";
 import TechStack from "@/components/introduce/TechStack";
-import Education from "@/components/introduce/Education"; // 추가
+import Education from "@/components/introduce/Education";
+import Awards from "@/components/introduce/Awards";
 
 export default function IntroduceView() {
   return (
@@ -8,6 +9,14 @@ export default function IntroduceView() {
       <hr className="border-zinc-100 dark:border-zinc-800" />
 
       <Profile />
+      <div className="space-y-8">
+        <h3 className="font-gaegu text-4xl font-bold text-sky-500 dark:text-amber-200">
+          Awards
+        </h3>
+        <Awards />
+      </div>
+
+      <hr className="border-zinc-100 dark:border-zinc-800" />
       <div className="space-y-8">
         <h3 className="font-gaegu text-4xl font-bold text-sky-500 dark:text-amber-200">
           Education
