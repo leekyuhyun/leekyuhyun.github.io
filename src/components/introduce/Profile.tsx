@@ -1,81 +1,80 @@
 import Image from "next/image";
-import { Github, Mail, BookText } from "lucide-react"; // BookText 아이콘 추가
+import { Github, Mail, BookText } from "lucide-react";
+import { CV_DATA } from "./introduceData";
 
 export default function Profile() {
-  return (
-    <section className="flex flex-col md:flex-row items-center gap-10">
-      <div className="relative w-56 md:w-64 shrink-0 group">
-        <div
-          className="absolute -inset-2 bg-sky-100/50 dark:bg-sky-900/30 rounded-4xl -z-10 
-                        border border-sky-200/50 dark:border-sky-700/30 shadow-sm
-                        transition-all duration-500 group-hover:scale-105 group-hover:shadow-md"
-        />
+  const { profile } = CV_DATA;
 
-        <div className="relative overflow-hidden rounded-3xl border-4 border-white dark:border-zinc-800 shadow-lg">
-          <div className="aspect-2646/3402 relative w-full">
-            <Image
-              src="/images/Profile.png"
-              alt="Profile"
-              fill
-              priority
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
+  // 문장별 줄바꿈 처리
+  const descriptions = profile.description.split(/(?<=[.,])\s/);
+
+  return (
+    <section className="flex flex-col md:flex-row items-center md:items-stretch justify-center gap-10 md:gap-16 pb-4 w-full max-w-5xl mx-auto">
+      {/* 프로필 이미지 섹션: 중앙 정렬 유지 */}
+      <div className="relative shrink-0 group flex items-center justify-center">
+        <div className="absolute -inset-3 bg-zinc-100/50 dark:bg-zinc-800/50 rounded-3xl -z-10 transition-transform duration-500 group-hover:scale-105" />
+
+        <div className="relative w-48 h-64 md:w-56 md:h-72 overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm">
+          <Image
+            src={profile.image}
+            alt={profile.name}
+            fill
+            priority
+            className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
       </div>
 
-      <div className="flex flex-col gap-6 text-center md:text-left">
-        <div className="flex flex-col gap-3">
-          <h2 className="font-gaegu text-5xl font-bold text-sky-500 dark:text-amber-200 transition-colors">
-            이규현
-          </h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed break-keep">
-            매일의 배움을 기록으로 자산화하는 개발자입니다.{" "}
-            <br className="hidden md:block" />
-            학습과 문제 해결 과정을 블로그에 정리하며 지식을 구조화하고,{" "}
-            <br className="hidden md:block" />
-            이를 통해 반복 가능한 성장 시스템을 만들어가고 있습니다.
-          </p>
+      {/* 정보 섹션: 중앙 배치를 유지하며 텍스트 간격 최적화 */}
+      <div className="flex flex-col justify-between w-full text-center md:text-left py-2 flex-1 max-w-2xl">
+        {/* 상단: 이름 및 소셜 (아이콘을 이름 아래로 배치하여 휑한 느낌 제거) */}
+        <div className="flex flex-col gap-5">
+          <div className="space-y-1">
+            <h2 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
+              {profile.name}
+            </h2>
+            <p className="text-xl md:text-2xl text-sky-500 dark:text-amber-300 font-semibold">
+              {profile.role}
+            </p>
+          </div>
+
+          <div className="flex justify-center md:justify-start gap-3">
+            <a
+              href={profile.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:text-sky-500 dark:hover:text-amber-200 transition-all text-sm font-medium shadow-sm"
+            >
+              <Github className="w-4 h-4" /> Github
+            </a>
+            <a
+              href={`mailto:${profile.links.email}`}
+              className="flex items-center gap-2 px-3 py-1.5 bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:text-sky-500 dark:hover:text-amber-200 transition-all text-sm font-medium shadow-sm"
+            >
+              <Mail className="w-4 h-4" /> Email
+            </a>
+            <a
+              href={profile.links.velog}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:text-sky-500 dark:hover:text-amber-200 transition-all text-sm font-medium shadow-sm"
+            >
+              <BookText className="w-4 h-4" /> Blog
+            </a>
+          </div>
         </div>
 
-        {/* 링크 아이콘 영역: 모두 동일한 사각형 버튼 스타일로 통일 */}
-        <div className="flex items-center justify-center md:justify-start gap-4">
-          {/* GitHub */}
-          <a
-            href="https://github.com/leekyuhyun"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="GitHub"
-            className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 
-                       text-zinc-600 dark:text-zinc-400 hover:text-sky-500 dark:hover:text-amber-200 
-                       hover:border-sky-200 dark:hover:border-amber-900/50 transition-all shadow-sm"
-          >
-            <Github className="w-6 h-6" />
-          </a>
-
-          {/* Email */}
-          <a
-            href="mailto:leekh010502@gmail.com"
-            title="Email"
-            className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 
-                       text-zinc-600 dark:text-zinc-400 hover:text-sky-500 dark:hover:text-amber-200 
-                       hover:border-sky-200 dark:hover:border-amber-900/50 transition-all shadow-sm"
-          >
-            <Mail className="w-6 h-6" />
-          </a>
-
-          {/* Velog (Blog Icon) */}
-          <a
-            href="https://velog.io/@leekh010502/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Velog"
-            className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 
-                       text-zinc-600 dark:text-zinc-400 hover:text-sky-500 dark:hover:text-amber-200 
-                       hover:border-sky-200 dark:hover:border-amber-900/50 transition-all shadow-sm"
-          >
-            <BookText className="w-6 h-6" />
-          </a>
+        {/* 하단: 자기소개 본문 - 사진 하단 라인과 맞춤 */}
+        <div className="relative mt-8 md:mt-0">
+          <div className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed break-keep flex flex-col gap-1.5">
+            {descriptions.map((sentence, index) => (
+              <p key={index} className="last:mb-0">
+                {sentence}
+              </p>
+            ))}
+          </div>
+          {/* 장식용 왼쪽 바: 중앙 배치 느낌을 해치지 않게 조절 */}
+          <div className="absolute -left-6 top-1 bottom-1 w-1 bg-sky-100 dark:bg-amber-900/30 rounded-full hidden md:block" />
         </div>
       </div>
     </section>
