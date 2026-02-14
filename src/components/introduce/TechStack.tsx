@@ -5,19 +5,16 @@ export default function TechStack() {
     <div className="flex flex-col gap-8">
       {CV_DATA.techStacks.map((category) => (
         <div key={category.title} className="flex flex-col gap-3">
-          {/* 카테고리 제목 */}
           <h4 className="text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
             {category.title}
           </h4>
 
-          {/* 3열 그리드 유지 */}
           <div className="grid grid-cols-3 gap-y-3 gap-x-2">
             {category.skills.map((skill) => (
               <div
                 key={skill.name}
                 className="flex flex-col items-center md:items-start gap-1.5 group transition-all"
               >
-                {/* grayscale과 opacity 속성을 제거하여 상시 색상 노출 */}
                 <skill.icon
                   className="w-4 h-4 transition-transform group-hover:scale-110"
                   style={{ color: skill.color }}
