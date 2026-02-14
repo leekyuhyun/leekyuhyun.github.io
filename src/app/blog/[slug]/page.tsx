@@ -23,4 +23,4 @@ export default async function BlogDetailPage({ params }: Props) {
 
   return <BlogDetailView post={post} />;
 }
-// 테스트중
+// 테스트중 제발 되라..
