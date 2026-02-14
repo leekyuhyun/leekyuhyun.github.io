@@ -1,24 +1,31 @@
 name: Sync Velog
+
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 15 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Fetch Data
+
+      - name: Fetch Velog Data
         run: node src/scripts/fetch-velog.js
-      - name: Commit & Push
+
+      - name: Commit and Push
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git add .
-          git commit -m "chore: update blog posts from velog" || echo "No changes"
-          git push
+          git config --global user.name 'leekyuhyun'
+          git config --global user.email 'leekyuhyun@users.noreply.github.com'
+          git add src/data/blogPosts.json
+          # 변경사항이 있을 때만 커밋 (에러 방지)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update blog posts" && git push)
