@@ -73,9 +73,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                href="https://velog.io/@leekh010502/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/blog"
                 className="hover:text-sky-500 dark:hover:text-amber-300 transition-colors"
               >
                 블로그
