@@ -1,7 +1,18 @@
-import { ChevronLeft, Calendar, FolderKanban, Tag } from "lucide-react";
+import { ChevronLeft, Calendar, FolderKanban } from "lucide-react";
 import Link from "next/link";
 
-export default function BlogDetailHeader({ post }: { post: any }) {
+interface BlogDetailHeaderProps {
+  post: {
+    title: string;
+    released_at: string;
+    tags: string[];
+    series?: {
+      name: string;
+    } | null;
+  };
+}
+
+export default function BlogDetailHeader({ post }: BlogDetailHeaderProps) {
   return (
     <div className="mb-16">
       <Link
@@ -16,7 +27,7 @@ export default function BlogDetailHeader({ post }: { post: any }) {
       </Link>
 
       <div className="flex flex-col gap-6">
-        {post.series && (
+        {post.series && post.series.name && (
           <div className="inline-flex self-start items-center gap-2 px-3 py-1 bg-sky-50 dark:bg-sky-900/20 text-sky-600 dark:text-sky-400 rounded-full text-xs font-bold uppercase tracking-wider">
             <FolderKanban size={14} />
             {post.series.name}
@@ -30,11 +41,13 @@ export default function BlogDetailHeader({ post }: { post: any }) {
         <div className="flex items-center gap-4 text-zinc-400 text-sm font-medium">
           <div className="flex items-center gap-1.5 border-r border-zinc-200 dark:border-zinc-800 pr-4">
             <Calendar size={16} />
-            {new Date(post.released_at).toLocaleDateString()}
+            {post.released_at
+              ? new Date(post.released_at).toLocaleDateString()
+              : "N/A"}
           </div>
           <div className="flex flex-wrap gap-2">
             {post.tags?.map((tag: string) => (
-              <span key={tag} className="text-zinc-500 dark:text-zinc-500">
+              <span key={tag} className="text-zinc-500 dark:text-zinc-400">
                 #{tag}
               </span>
             ))}

@@ -72,12 +72,12 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/blog"
-                className="hover:text-sky-500 dark:hover:text-amber-300 transition-colors"
+                className="hover:text-sky-500 transition-colors"
               >
                 블로그
-              </a>
+              </Link>
             </li>
           </ul>
 
