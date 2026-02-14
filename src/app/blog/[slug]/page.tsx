@@ -1,6 +1,7 @@
 import posts from "@/data/blogPosts.json";
 import BlogDetailView, { BlogPost } from "@/views/blogdetail";
 import { notFound } from "next/navigation";
+
 export async function generateStaticParams() {
   return (posts as BlogPost[]).map((post) => ({
     slug: post.url_slug,
