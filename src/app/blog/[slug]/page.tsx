@@ -1,6 +1,11 @@
 import posts from "@/data/blogPosts.json";
-import BlogDetailView, { BlogPost } from "@/views/blogdetail"; // 타입 가져오기
+import BlogDetailView, { BlogPost } from "@/views/blogdetail";
 import { notFound } from "next/navigation";
+export async function generateStaticParams() {
+  return (posts as BlogPost[]).map((post) => ({
+    slug: post.url_slug,
+  }));
+}
 
 type Props = {
   params: Promise<{ slug: string }>;
