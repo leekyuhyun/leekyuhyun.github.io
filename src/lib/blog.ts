@@ -12,7 +12,7 @@ export interface Post {
   tags?: string[];
 }
 
-const postsDirectory = path.join(process.cwd(), "content");
+const postsDirectory = path.join(process.cwd(), "content/Blog");
 
 function getFilesRecursively(dir: string): string[] {
   const files = fs.readdirSync(dir);

@@ -11,31 +11,32 @@ export default function SeriesFilters({
   activeCategory,
   onCategoryChange,
 }: SeriesFiltersProps) {
+  const all = ["All", ...categories];
+
   return (
-    <div className="flex flex-wrap gap-3 mb-12">
-      <button
-        onClick={() => onCategoryChange("All")}
-        className={`px-4 py-2 rounded-xl text-sm font-bold transition-all border ${
-          activeCategory === "All"
-            ? "bg-sky-500 text-white border-sky-500 dark:bg-amber-400 dark:text-zinc-900 dark:border-amber-400"
-            : "bg-transparent text-zinc-500 border-zinc-200 dark:border-zinc-800 hover:border-sky-500 dark:hover:border-amber-400"
-        }`}
-      >
-        All
-      </button>
-      {categories.map((category) => (
-        <button
-          key={category}
-          onClick={() => onCategoryChange(category)}
-          className={`px-4 py-2 rounded-xl text-sm font-bold transition-all border ${
-            activeCategory === category
-              ? "bg-sky-500 text-white border-sky-500 dark:bg-amber-400 dark:text-zinc-900 dark:border-amber-400"
-              : "bg-transparent text-zinc-500 border-zinc-200 dark:border-zinc-800 hover:border-sky-500 dark:hover:border-amber-400"
-          }`}
-        >
-          {category}
-        </button>
-      ))}
+    <div className="flex flex-col items-center mb-14">
+      <div className="flex flex-wrap justify-center gap-2">
+        {all.map((category) => {
+          const isActive = activeCategory === category;
+          return (
+            <button
+              key={category}
+              onClick={() => onCategoryChange(category)}
+              className={`relative px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${
+                isActive
+                  ? "text-white dark:text-zinc-900"
+                  : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200"
+              }`}
+            >
+              {isActive && (
+                <span className="absolute inset-0 rounded-full bg-sky-500 dark:bg-amber-400 transition-all duration-200" />
+              )}
+              <span className="relative z-10">{category}</span>
+            </button>
+          );
+        })}
+      </div>
+      <div className="mt-4 w-full max-w-xs h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent" />
     </div>
   );
 }

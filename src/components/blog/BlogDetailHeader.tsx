@@ -12,7 +12,7 @@ export default function BlogDetailHeader({
         {post.tags?.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1 bg-sky-50 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 text-xs font-bold rounded-full uppercase tracking-wider"
+            className="px-3 py-1 bg-sky-50 dark:bg-amber-900/20 text-sky-600 dark:text-amber-300 text-xs font-bold rounded-full uppercase tracking-wider"
           >
             {tag}
           </span>
