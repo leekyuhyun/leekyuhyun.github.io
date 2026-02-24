@@ -1,6 +1,5 @@
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import BlogDetailView from "@/views/blogdetail";
-import { serialize } from "next-mdx-remote/serialize";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -14,20 +13,9 @@ export default async function PostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  let postData;
-  try {
-    const post = getPostBySlug(slug);
-    const mdxSource = await serialize(post.content);
 
-    postData = {
-      frontMatter: post.frontMatter,
-      content: mdxSource,
-    };
-  } catch {
-    notFound();
-  }
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
 
-  return (
-    <BlogDetailView post={postData.frontMatter} content={postData.content} />
-  );
+  return <BlogDetailView post={post.frontMatter} content={post.content} />;
 }

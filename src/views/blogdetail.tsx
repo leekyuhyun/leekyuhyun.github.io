@@ -1,12 +1,10 @@
-"use client";
-
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import BlogDetailHeader from "@/components/blog/BlogDetailHeader";
 import { Post } from "@/lib/blog";
 
 interface BlogDetailViewProps {
   post: Omit<Post, "slug">;
-  content: MDXRemoteSerializeResult;
+  content: string;
 }
 
 export default function BlogDetailView({ post, content }: BlogDetailViewProps) {
@@ -14,7 +12,7 @@ export default function BlogDetailView({ post, content }: BlogDetailViewProps) {
     <article className="max-w-3xl mx-auto px-6 py-20 font-sans">
       <BlogDetailHeader post={post} />
       <div className="prose dark:prose-invert max-w-none mt-10">
-        <MDXRemote {...content} />
+        <MDXRemote source={content} />
       </div>
     </article>
   );
