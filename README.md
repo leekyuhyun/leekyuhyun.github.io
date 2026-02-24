@@ -81,14 +81,14 @@ content/
 ### 요구사항
 
 - Node.js 18+
-- npm 또는 yarn
+- npm
 
 ### 설치 및 실행
 
 ```bash
 # 저장소 클론
-git clone https://github.com/leekyuhyun/universe.git
-cd universe
+git clone https://github.com/leekyuhyun/leekyuhyun.github.io.git
+cd leekyuhyun.github.io
 
 # 의존성 설치
 npm install
