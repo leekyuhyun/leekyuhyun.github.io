@@ -26,9 +26,9 @@ export default function BlogView({ posts }: { posts: Post[] }) {
     <div className="max-w-6xl mx-auto px-6 py-10 font-sans">
       <header className="mb-16">
         <h2 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
-          Blog
+          블로그
         </h2>
-        <p className="text-zinc-500">직접 기록한 마크다운 포스트입니다.</p>
+        <p className="text-zinc-500">배움의 기록이 담긴 블로그입니다.</p>
       </header>
 
       <SeriesFilters
