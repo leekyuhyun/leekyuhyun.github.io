@@ -36,7 +36,7 @@ export default function SeriesFilters({
           );
         })}
       </div>
-      <div className="mt-4 w-full max-w-xs h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent" />
+      <div className="mt-4 w-full max-w-xs h-px bg-linear-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent" />
     </div>
   );
 }
