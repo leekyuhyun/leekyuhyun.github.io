@@ -2,16 +2,27 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Search as SearchIcon, X } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Search() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
       searchInputRef.current.focus();
     }
   }, [isSearchOpen]);
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && query.trim()) {
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+      setIsSearchOpen(false);
+      setQuery("");
+    }
+  };
 
   return (
     <div
@@ -20,6 +31,9 @@ export default function Search() {
       <input
         ref={searchInputRef}
         type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleSearch}
         placeholder="검색어를 입력하세요..."
         className={`w-full py-2 pl-10 pr-4 text-sm rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 outline-hidden transition-all duration-300 ${
           isSearchOpen
