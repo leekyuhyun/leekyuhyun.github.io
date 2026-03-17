@@ -1,18 +1,12 @@
-"use client";
+'use client';
 
-import Profile from "@/components/introduce/Profile";
-import TechStack from "@/components/introduce/TechStack";
-import Education from "@/components/introduce/Education";
-import Awards from "@/components/introduce/Awards";
-import Project from "@/components/introduce/Project";
+import Profile from '@/components/introduce/Profile';
+import TechStack from '@/components/introduce/TechStack';
+import Education from '@/components/introduce/Education';
+import Awards from '@/components/introduce/Awards';
+import ProjectIntroduce from '@/components/introduce/ProjectIntroduce';
 
-const SidebarSection = ({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) => (
+const SidebarSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="flex flex-col gap-4">
     <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-amber-400 border-b border-zinc-100 dark:border-zinc-800 pb-2">
       {title}
@@ -44,7 +38,7 @@ export default function IntroduceView() {
           <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-sky-500 dark:text-amber-400 border-b border-zinc-100 dark:border-zinc-800 pb-2">
             Projects
           </h3>
-          <Project />
+          <ProjectIntroduce />
         </div>
       </div>
     </div>
