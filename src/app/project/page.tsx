@@ -1,5 +1,7 @@
-import ProjectView from "@/views/project";
+import { getAllProjects } from '@/lib/project';
+import ProjectView from '@/views/project';
 
-export default function ProjectsPage() {
-  return <ProjectView />;
+export default function Page() {
+  const projects = getAllProjects();
+  return <ProjectView projects={projects} />;
 }
