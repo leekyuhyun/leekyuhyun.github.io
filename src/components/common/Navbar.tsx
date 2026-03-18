@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Sun, Moon, Monitor, ChevronDown } from "lucide-react";
-import Search from "./Search";
+import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { Sun, Moon, Monitor, ChevronDown } from 'lucide-react';
+import Search from './Search';
 
 export default function Navbar() {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -74,7 +74,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/blog"
-                className="hover:text-sky-500 transition-colors"
+                className="hover:text-sky-500 dark:hover:text-amber-300 transition-colors"
               >
                 블로그
               </Link>
@@ -88,22 +88,22 @@ export default function Navbar() {
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center gap-1 rounded-full border border-zinc-200 p-1.5 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm transition-all hover:bg-zinc-50 dark:hover:bg-zinc-800"
               >
-                {resolvedTheme === "dark" ? (
+                {resolvedTheme === 'dark' ? (
                   <Moon className="h-4 w-4 text-yellow-400" />
                 ) : (
                   <Sun className="h-4 w-4 text-orange-500" />
                 )}
                 <ChevronDown
-                  className={`h-3 w-3 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                  className={`h-3 w-3 transition-transform ${isOpen ? 'rotate-180' : ''}`}
                 />
               </button>
 
               {isOpen && (
                 <div className="absolute right-0 mt-2 w-32 rounded-xl border border-zinc-200 bg-white p-1 shadow-lg dark:border-zinc-800 dark:bg-zinc-900 animate-in fade-in zoom-in duration-200">
                   {[
-                    { name: "Light", value: "light", icon: Sun },
-                    { name: "Dark", value: "dark", icon: Moon },
-                    { name: "System", value: "system", icon: Monitor },
+                    { name: 'Light', value: 'light', icon: Sun },
+                    { name: 'Dark', value: 'dark', icon: Moon },
+                    { name: 'System', value: 'system', icon: Monitor },
                   ].map((item) => (
                     <button
                       key={item.value}
@@ -113,8 +113,8 @@ export default function Navbar() {
                       }}
                       className={`flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-sm transition-colors ${
                         theme === item.value
-                          ? "bg-sky-50 text-sky-600 dark:bg-sky-900/20 dark:text-sky-400"
-                          : "text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                          ? 'bg-sky-50 text-sky-600 dark:bg-sky-900/20 dark:text-sky-400'
+                          : 'text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-800'
                       }`}
                     >
                       <item.icon className="h-4 w-4" />
