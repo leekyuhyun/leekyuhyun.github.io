@@ -7,9 +7,6 @@ export default function ProjectIntroduce() {
 
   return (
     <section className="mb-12">
-      <h2 className="text-2xl font-bold mb-6 border-b-2 border-zinc-200 dark:border-zinc-800 pb-2">
-        Projects
-      </h2>
       <div className="space-y-12">
         {projects.map((project, index) => (
           <div key={index} className="group">
@@ -22,7 +19,7 @@ export default function ProjectIntroduce() {
               </span>
             </div>
 
-            <div className="text-sky-600 dark:text-sky-400 text-sm font-semibold mb-3">
+            <div className="text-sky-500 dark:text-amber-400 text-sm font-semibold mb-3">
               {project.role}
             </div>
 
