@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Post } from "@/lib/blog";
+import Link from 'next/link';
+import Image from 'next/image';
+import { Post } from '@/lib/blog';
 
 export default function BlogCard({ post }: { post: Post }) {
   return (
@@ -8,13 +8,12 @@ export default function BlogCard({ post }: { post: Post }) {
       <div className="flex flex-col h-full bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden transition-all hover:shadow-xl hover:border-sky-500 dark:hover:border-amber-400">
         <div className="relative h-48 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
           <Image
-            src={post.thumbnail || "/images/Profile.png"}
+            src={post.thumbnail || '/images/Profile.png'}
             alt={post.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             unoptimized
           />
-          {/* 시리즈가 있다면 이미지 우측 상단에 표시 */}
           {post.series && (
             <div className="absolute top-3 right-3 px-2 py-1 bg-black/50 backdrop-blur-md text-white text-[10px] rounded-md font-bold">
               {post.series}
