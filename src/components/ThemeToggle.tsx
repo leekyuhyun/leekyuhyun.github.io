@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "next-themes";
 import { Sun, Moon, Monitor } from "lucide-react";
 
 export default function ThemeToggle() {
