@@ -14,7 +14,7 @@ export default function Contact() {
             <span className="font-bold text-slate-500 dark:text-slate-400">
               {item.label}
             </span>
-            <a 
+            <a
               href={item.href}
               target={item.label === "Github" || item.label === "Blog" ? "_blank" : "_self"}
               rel="noreferrer"

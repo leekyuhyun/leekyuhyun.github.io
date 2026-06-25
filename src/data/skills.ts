@@ -1,3 +1,26 @@
 export const SKILLS_DATA = [
-  "React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript", "HTML/CSS"
+  {
+    category: "Language",
+    items: ["JavaScript", "TypeScript"],
+  },
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "TailwindCSS"],
+  },
+  {
+    category: "Backend",
+    items: ["Node.js (Express)"],
+  },
+  {
+    category: "Database",
+    items: ["MySQL", "PostgreSQL", "Supabase"],
+  },
+  {
+    category: "DevOps / Deployment",
+    items: ["Vercel", "Render", "Docker", "GitHub Actions"],
+  },
+  {
+    category: "Library / API",
+    items: ["Socket.IO", "Axios", "Orval", "MSW"],
+  },
 ];

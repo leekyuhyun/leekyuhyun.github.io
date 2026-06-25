@@ -5,7 +5,7 @@ import { useState } from "react";
 import { PROJECTS_DATA } from "../data/projects";
 
 export default function Projects() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // First project open by default
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleProject = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -16,14 +16,14 @@ export default function Projects() {
       <h2 className="text-5xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-2">
         <span className="text-sky-500">#</span> Projects
       </h2>
-      
+
       <div className="space-y-6">
         {PROJECTS_DATA.map((project, index) => {
           const isOpen = openIndex === index;
           return (
             <article key={index} className="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900 shadow-sm overflow-hidden transition-all">
               {/* Project Header (Clickable Accordion Trigger) */}
-              <button 
+              <button
                 onClick={() => toggleProject(index)}
                 className="w-full text-left p-6 flex flex-col md:flex-row justify-between items-start md:items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors focus:outline-none"
               >
@@ -44,10 +44,10 @@ export default function Projects() {
                 </div>
                 {/* Chevron Icon */}
                 <div className={`mt-4 md:mt-0 w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center transition-colors ${isOpen ? "bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400" : "bg-slate-100 dark:bg-slate-800 text-slate-400"}`}>
-                  <svg 
-                    className={`w-6 h-6 transform transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
+                  <svg
+                    className={`w-6 h-6 transform transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -56,7 +56,7 @@ export default function Projects() {
               </button>
 
               {/* Collapsible Content */}
-              <div 
+              <div
                 className={`transition-all duration-500 ease-in-out origin-top ${isOpen ? "max-h-[5000px] opacity-100 border-t border-slate-100 dark:border-slate-800" : "max-h-0 opacity-0 overflow-hidden"}`}
               >
                 <div className="p-6">
@@ -102,9 +102,9 @@ export default function Projects() {
                   {/* Project Image */}
                   {project.image && (
                     <div className="w-full mb-6 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700">
-                      <Image 
-                        src={project.image} 
-                        alt={project.title} 
+                      <Image
+                        src={project.image}
+                        alt={project.title}
                         className="w-full h-auto object-cover max-h-[350px]"
                       />
                     </div>
@@ -123,15 +123,15 @@ export default function Projects() {
                             </h5>
                             <div className="flex flex-col gap-2 text-2xl text-slate-700 dark:text-slate-300 leading-snug">
                               <div className="flex gap-2 items-start">
-                                <span className="font-bold text-slate-900 dark:text-white shrink-0 px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-xl">상황</span> 
+                                <span className="font-bold text-slate-900 dark:text-white shrink-0 px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-xl">상황</span>
                                 <span className="mt-0.5">{cont.situation}</span>
                               </div>
                               <div className="flex gap-2 items-start">
-                                <span className="font-bold text-slate-900 dark:text-white shrink-0 px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-xl">해결</span> 
+                                <span className="font-bold text-slate-900 dark:text-white shrink-0 px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-xl">해결</span>
                                 <span className="mt-0.5">{cont.solution.split('\n').join(' ')}</span>
                               </div>
                               <div className="flex gap-2 items-start">
-                                <span className="font-bold text-slate-900 dark:text-white shrink-0 px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-xl">결과</span> 
+                                <span className="font-bold text-slate-900 dark:text-white shrink-0 px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-xl">결과</span>
                                 <span className="mt-0.5">{cont.result}</span>
                               </div>
                             </div>
