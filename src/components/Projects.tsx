@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
+
 import { useState } from "react";
 import { PROJECTS_DATA } from "../data/projects";
 
 export default function Projects() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // First project open by default
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleProject = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -102,7 +102,7 @@ export default function Projects() {
                   {/* Project Image */}
                   {project.image && (
                     <div className="w-full mb-6 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700">
-                      <Image 
+                      <img 
                         src={project.image} 
                         alt={project.title} 
                         className="w-full h-auto object-cover max-h-[350px]"
