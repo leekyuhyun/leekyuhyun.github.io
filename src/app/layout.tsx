@@ -3,8 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "kyulee portfolio",
-  description: "규리의 포트폴리오 웹사이트입니다.",
+  title: "이규현 - FullStack Developer",
+  description: "이규현의 포트폴리오 웹사이트입니다.",
 };
 
 export default function RootLayout({
