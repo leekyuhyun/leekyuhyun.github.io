@@ -9,18 +9,18 @@ export const SKILLS_DATA = [
   },
   {
     category: "Backend",
-    items: ["Node.js (Express)"],
+    items: ["Express"],
   },
   {
     category: "Database",
     items: ["MySQL", "PostgreSQL", "Supabase"],
   },
   {
-    category: "DevOps / Deployment",
-    items: ["Vercel", "Render", "Docker", "GitHub Actions"],
+    category: "DevOps",
+    items: ["Docker", "Github Actions"],
   },
   {
     category: "Library / API",
-    items: ["Socket.IO", "Axios", "Orval", "MSW"],
+    items: ["Socket.io", "Axios", "Orval", "MSW"],
   },
 ];

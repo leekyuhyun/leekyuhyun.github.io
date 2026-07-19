@@ -1,14 +1,14 @@
 import project1Img from "../assets/images/project1.png";
+import project2Img from "../assets/images/project2.png";
+import project3Img from "../assets/images/project3.png";
 
 export const PROJECTS_DATA = [
-  { 
-    title: "은밀하게 위대하게", 
-    description: "가장 완벽한 보호색, 모니터 뒤에서 당당하게 확인하는 나만의 시크릿 포트폴리오", 
+  {
+    title: "은밀하게 위대하게",
+    description: "가장 완벽한 보호색, 모니터 뒤에서 당당하게 확인하는 나만의 시크릿 포트폴리오",
     image: project1Img,
     github: [
-      { label: "Frontend Repository", url: "https://github.com/prgrms-fullcycle-devcourse/webfull_9_10_Secretly-Greatly_FE" },
-      { label: "Backend Repository", url: "https://github.com/prgrms-fullcycle-devcourse/webfull_9_10_Secretly-Greatly_BE" },
-      { label: "News Server Repository", url: "https://github.com/prgrms-fullcycle-devcourse/webfull_9_10_Secretly-Greatly_news" }
+      { label: "Github Repository", url: "https://github.com/Legend-Vibe-Guys" }
     ],
     period: "2026.05.18. ~ 2026.06.19.",
     team: "FE(2), BE(1), FullStack(3)",
@@ -35,16 +35,62 @@ export const PROJECTS_DATA = [
       }
     ]
   },
-  { 
-    title: "Project Two (준비 중)", 
-    description: "두 번째 프로젝트에 대한 간단한 설명입니다.", 
-    image: null,
-    github: [], period: "", team: "", role: "", tags: ["React", "CSS"], contributions: [] 
+  {
+    title: "아이케어 AI (iCare AI) - 키즈노트",
+    description: "AI 기반 영유아 스마트 리포트 및 보육 행정 솔루션",
+    image: project2Img,
+    github: [
+      { label: "Github Repository", url: "https://github.com/Legend-Vibe-Guys" }
+    ],
+    period: "2026.04.06 ~ 2026.04.13",
+    team: "FullStack (4)",
+    role: "FullStack - 프로젝트 팀장, FE, BE 개발환경 구축 및 배포, firebase 기반 로그인 서비스 구현",
+    tags: ["React", "Express", "Firebase", "Gemini API"],
+    contributions: [
+      {
+        title: "Render 인프라 가용성 확보 및 Cold Start 문제 해결",
+        situation: "Render 프리 티어 배포 환경 특성상, 일정 시간 요청이 없으면 서버가 절전 모드로 전환되는 Cold Start 이슈 발생\n이로 인한 초기 요청 시의 심각한 응답 지연으로 사용자 경험(UX)이 저하되는 문제 인식",
+        solution: "UptimeRobot 연동 : 외부 헬스체크 툴을 도입하고 백엔드 내부에 경량화된 /health 엔드포인트 구현\n주기적 활성화 : 5분 주기 가벼운 헬스체크 요청을 자동화하여 서버가 상시 활성 상태(Warm-up)를 유지하도록 설정",
+        result: "서버 절전 모드 진입을 차단하여 초기 응답 속도 및 서비스 가용성 개선\n추가적인 인프라 비용 지출 없이 프리 티어 환경의 제약을 극복한 효율적인 해결책 제시"
+      },
+      {
+        title: "Firebase 기반 효율적인 인증 파이프라인 구축",
+        situation: "Firebase Auth 도입 후, 토큰 만료에 따른 세션 끊김 현상 및 프론트엔드 전역 상태와의 동기화 불일치 문제 발생\n안전하고 끊김 없는 사용자 인증 상태 유지를 위한 인증 상태 통합 관리 필요성 인식",
+        solution: "실시간 상태 동기화 : Firebase의 onIdTokenChanged를 활용해 토큰 및 인증 상태 변화를 실시간 감지하고 전역 상태에 반영\n인증 자동화 인터셉터 : API 팩토리(Axios 인터셉터 등)를 설계하여 API 요청 시 유효한 인증 토큰이 헤더에 자동 주입되도록 구현",
+        result: "불필요한 로그아웃 없는 자동 세션 갱신 및 끊김 없는 사용자 경험(UX) 제공\nAPI 호출 전 토큰 유효성을 검증하는 안전하고 효율적인 프론트엔드 보안 파이프라인 구축"
+      }
+    ]
   },
-  { 
-    title: "Project Three (준비 중)", 
-    description: "세 번째 프로젝트에 대한 간단한 설명입니다.", 
+  {
+    title: "범죄 취약 계층의 초동 대응을 위한 스마트 장치 및 AI 기반 실시간 대응 서비스",
+    description: "아동, 청소년 안전을 위해 다중 센서와 AI로 위험을 실시간 탐지하고, 보호자에게 즉각 경고 및 상황을 모니터링할 수 있는 아두이노 기반의 스마트 방범 시스템을 개발",
     image: null,
-    github: [], period: "", team: "", role: "", tags: ["JavaScript", "HTML"], contributions: [] 
+    github: [
+      { label: "Github Repository", url: "https://github.com/The-cane-of-Min-Jeung" }
+    ],
+    period: "2025.07.08. ~ 2025.10.14",
+    team: "FE (1), BE (3), H/W (1), AI (1)",
+    role: "프론트엔드 상황 대시보드 개발",
+    tags: ["Vue.js", "Kakao Map API", "Websocket"],
+    contributions: [
+      {
+        title: "준비 중",
+        situation: "",
+        solution: "",
+        result: ""
+      },
+      {
+        title: "준비 중",
+        situation: "",
+        solution: "",
+        result: ""
+      },
+      {
+        title: "준비 중",
+        situation: "",
+        solution: "",
+        result: ""
+      }
+    ]
   },
 ];

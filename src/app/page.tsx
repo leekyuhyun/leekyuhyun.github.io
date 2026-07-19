@@ -5,6 +5,7 @@ import Contact from "../components/Contact";
 import ThemeToggle from "../components/ThemeToggle";
 import Profile from "../components/Profile";
 import Footer from "../components/Footer";
+import Others from "../components/Others";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <section className="w-full md:w-[74%] p-8 md:p-12 flex flex-col gap-12 print:w-[70%] print:float-right">
           <Values />
           <Projects />
+          <Others />
         </section>
 
       </main>

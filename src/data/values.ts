@@ -6,18 +6,18 @@ export interface ValueItem {
 
 export const VALUES_DATA: ValueItem[] = [
   {
-    title: "효율성 & 생산성 극대화",
-    description: "반복적인 단순 작업이나 개발 환경의 낭비를 제거하고 자동화를 구축하여 고부가가치 비즈니스 로직에 몰입합니다.",
+    title: "도구 도입의 이유와 명확한 근거를 탐구합니다.",
+    description: "MSW로 백엔드 의존성을 분리하여 FE 단독 검증 환경을 구축하고, Orval로 Swagger 명세 기반의 API 클라이언트 및 타입 생성을 자동화하여 협업 속도를 높이고 휴먼 에러를 차단했습니다.",
     iconName: "Zap",
   },
   {
-    title: "소통과 협업의 병목 해소",
-    description: "프론트엔드와 백엔드 간의 통신 및 API 스펙(Orval, MSW 등)을 효율화하여 협업 오버헤드를 낮춥니다.",
-    iconName: "Users",
+    title: "화면 구현을 넘어 서비스를 안정적으로 배포하고 운영합니다.",
+    description: "Vercel과 Render 환경에서 프론트엔드·백엔드 서비스를 직접 배포하고 운영했습니다. 외부 헬스체크 툴(UptimeRobot) 연동 및 주기적 활성화 스케줄러를 설계하여 프리티어 인프라의 Cold Start 제약을 극복하고 초기 응답 속도를 개선했습니다.",
+    iconName: "ShieldCheck",
   },
   {
-    title: "품질 중심의 아키텍처",
-    description: "단순 구현을 넘어 유지보수가 편하고 지속 가능한 구조를 고민하고 견고한 제품을 만들어 냅니다.",
-    iconName: "ShieldCheck",
+    title: "시행착오의 꼼꼼한 기록(TIL)을 통해 팀과 빠르게 동기화합니다.",
+    description: "공식 문서 중심의 집요한 탐구로 문제를 해결하며, 신규 기술 도입 과정과 트러블슈팅 경험을 문서화하여 팀원들과 공유하고 함께 성장하는 생산적인 개발 환경을 지향합니다.",
+    iconName: "Users",
   },
 ];
