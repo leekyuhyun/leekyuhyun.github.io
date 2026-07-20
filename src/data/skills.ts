@@ -23,4 +23,8 @@ export const SKILLS_DATA = [
     category: "Library / API",
     items: ["Socket.io", "Axios", "Orval", "MSW"],
   },
+  {
+    category: "AI Tools",
+    items: ["Gemini", "Claude Code"],
+  }
 ];

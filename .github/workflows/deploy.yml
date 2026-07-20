@@ -1,0 +1,63 @@
+name: Deploy Next.js site to Pages
+
+on:
+  # 기본 브랜치(main)에 push가 일어날 때 작동합니다.
+  push:
+    branches: ["main"]
+  # GitHub Actions 탭에서 수동으로 실행할 수 있게 합니다.
+  workflow_dispatch:
+
+# GitHub Pages 배포를 위한 권한 설정
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: next
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Build with Next.js
+        run: pnpm run build
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
