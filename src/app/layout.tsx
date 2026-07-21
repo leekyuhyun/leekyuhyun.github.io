@@ -10,14 +10,6 @@ export const metadata: Metadata = {
     description: "이규현의 포트폴리오 웹사이트입니다.",
     url: "https://leekyuhyun.github.io",
     siteName: "이규현의 포트폴리오",
-    images: [
-      {
-        url: "/icon.svg",
-        width: 800,
-        height: 800,
-        alt: "Portfolio Icon",
-      },
-    ],
     locale: "ko_KR",
     type: "website",
   },
