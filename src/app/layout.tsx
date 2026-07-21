@@ -5,6 +5,22 @@ import { ThemeProvider } from "../components/ThemeProvider";
 export const metadata: Metadata = {
   title: "이규현 - FullStack Developer",
   description: "이규현의 포트폴리오 웹사이트입니다.",
+  openGraph: {
+    title: "이규현 - FullStack Developer",
+    description: "이규현의 포트폴리오 웹사이트입니다.",
+    url: "https://leekyuhyun.github.io",
+    siteName: "이규현의 포트폴리오",
+    images: [
+      {
+        url: "/icon.svg",
+        width: 800,
+        height: 800,
+        alt: "Portfolio Icon",
+      },
+    ],
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
