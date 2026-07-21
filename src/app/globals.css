@@ -29,6 +29,18 @@
 
 @theme {
   --font-sans: 'Dongle';
+
+  /* Dongle 폰트는 기본 크기가 다소 작으므로, 전체적으로 약 1.25배 정도만 부드럽게 확대합니다. */
+  --text-xs: 1rem;
+  --text-sm: 1.125rem;
+  --text-base: 1.25rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 2.75rem;
+  --text-5xl: 3.5rem;
+  --text-6xl: 4.5rem;
 }
 
 :root {

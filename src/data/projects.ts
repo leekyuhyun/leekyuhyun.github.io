@@ -45,7 +45,7 @@ export const PROJECTS_DATA = [
     period: "2026.04.06 ~ 2026.04.13",
     team: "FullStack (4)",
     role: "FullStack - 프로젝트 팀장, FE, BE 개발환경 구축 및 배포, firebase 기반 로그인 서비스 구현",
-    tags: ["React", "Express", "Firebase", "Gemini API"],
+    tags: ["React", "Nest", "Express", "Firebase", "Gemini API"],
     contributions: [
       {
         title: "Render 인프라 가용성 확보 및 Cold Start 문제 해결",
@@ -68,7 +68,7 @@ export const PROJECTS_DATA = [
     github: [
       { label: "Github Repository", url: "https://github.com/The-cane-of-Min-Jeung" }
     ],
-    period: "2025.07.08 ~ 2025.10.14",
+    period: "2025.07.08 ~ 2025.11.07",
     team: "Frontend (1), Backend (3), Hardware (1), AI (1)",
     role: "Frontend",
     tags: ["Vue.js", "Kakao Map API", "Websocket"],

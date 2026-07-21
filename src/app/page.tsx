@@ -1,44 +1,36 @@
+import Header from "../components/Header";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
-import Values from "../components/Values";
-import Contact from "../components/Contact";
-import ThemeToggle from "../components/ThemeToggle";
 import Profile from "../components/Profile";
 import Footer from "../components/Footer";
-import Others from "../components/Others";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 py-6 md:py-12 px-4 md:px-10 print:bg-white print:p-0">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
+      <Header />
 
-      {/* CV Paper Container */}
-      <main className="max-w-7xl mx-auto relative bg-white dark:bg-slate-900 shadow-xl dark:shadow-2xl dark:shadow-slate-900/50 rounded-2xl overflow-hidden flex flex-col md:flex-row print:shadow-none print:my-0 print:block">
-
-        {/* Theme Toggle Button (Inside Paper) */}
-        <div className="absolute top-4 right-4 z-50 print:hidden">
-          <ThemeToggle />
-        </div>
-
-        {/* Left Sidebar */}
-        <aside className="w-full md:w-[26%] bg-slate-50 dark:bg-slate-800/40 p-8 md:p-10 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 flex flex-col gap-10 print:w-[30%] print:float-left print:border-r print:min-h-screen">
-
-          {/* Profile & About */}
+      <main className="max-w-screen-xl mx-auto px-4 sm:px-6 py-8 md:py-16 flex flex-col gap-10 md:gap-12">
+        {/* Profile Section (Top) */}
+        <section className="mb-4 md:mb-8">
           <Profile />
-
-          <Contact />
-          <Skills />
-        </aside>
-
-        {/* Right Main Area */}
-        <section className="w-full md:w-[74%] p-8 md:p-12 flex flex-col gap-12 print:w-[70%] print:float-right">
-          <Values />
-          <Projects />
-          <Others />
         </section>
 
+        {/* Content Area (Left: Tags, Right: Feed) */}
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+          
+          {/* Left Sidebar (Tags) */}
+          <aside className="w-full lg:w-[280px] shrink-0 flex flex-col sm:flex-row lg:flex-col gap-8 lg:gap-10 lg:sticky lg:top-24">
+            <div className="flex-1 lg:w-full"><Skills /></div>
+          </aside>
+
+          {/* Right Main Feed (Posts) */}
+          <section className="w-full flex-1 flex flex-col gap-12 md:gap-16">
+            <Projects />
+          </section>
+
+        </div>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

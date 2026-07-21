@@ -5,22 +5,22 @@ export default function Contact() {
 
   return (
     <section>
-      <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-2 border-b border-slate-200 dark:border-slate-700 pb-1">
+      <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-200 mb-3 border-b border-slate-200 dark:border-slate-700 pb-2 uppercase tracking-wider">
         Contact
       </h2>
-      <ul className="flex flex-col gap-2 text-2xl">
+      <ul className="flex flex-col gap-1">
         {items.map((item, index) => (
-          <li key={index} className="flex flex-col gap-0 leading-tight">
-            <span className="font-bold text-slate-500 dark:text-slate-400">
-              {item.label}
-            </span>
+          <li key={index}>
             <a
               href={item.href}
               target={item.label === "Github" || item.label === "Blog" ? "_blank" : "_self"}
               rel="noreferrer"
-              className="text-slate-800 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400 transition-colors break-all"
+              className="block px-3 py-2 -mx-3 text-lg md:text-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-sky-600 dark:hover:text-sky-400 rounded-lg transition-colors"
             >
-              {item.value}
+              <div className="flex flex-col">
+                <span className="font-bold">{item.label}</span>
+                <span className="text-base md:text-lg opacity-80 font-medium">{item.value}</span>
+              </div>
             </a>
           </li>
         ))}
