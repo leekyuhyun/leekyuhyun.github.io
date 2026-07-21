@@ -1,6 +1,7 @@
 import project1Img from "../assets/images/project1.png";
 import project2Img from "../assets/images/project2.png";
 import project3Img from "../assets/images/project3.png";
+import project4Img from "../assets/images/project4.png";
 
 export const PROJECTS_DATA = [
   {
@@ -8,12 +9,12 @@ export const PROJECTS_DATA = [
     description: "가장 완벽한 보호색, 모니터 뒤에서 당당하게 확인하는 나만의 시크릿 포트폴리오",
     image: project1Img,
     github: [
-      { label: "Github Repository", url: "https://github.com/Secretly-Greatly-web" }
+      { label: "Github URL", url: "https://github.com/Secretly-Greatly-web" }
     ],
     period: "2026.05.18 ~ 2026.06.19",
     team: "FE(2), BE(1), FullStack(3)",
     role: "FullStack - FE 팀장, 개발환경 구축 및 배포, 뉴스 서버 구축",
-    tags: ["Next.js", "Express", "Gemini API", "Orval", "Mock Service Worker", "Socket.IO"],
+    tags: ["Next.js", "Nest.js", "Express", "Gemini API", "Orval", "Mock Service Worker", "Socket.IO"],
     contributions: [
       {
         title: "OpenAPI 기반 API 코드 자동화 및 모킹(Mocking) 환경 구축",
@@ -36,16 +37,36 @@ export const PROJECTS_DATA = [
     ]
   },
   {
+    title: "널널 (Null Null)",
+    description: "안되는시간 빼고 널널한 시간 찾기",
+    image: project4Img,
+    github: [
+      { label: "Github Repository", url: "https://github.com/Legend-Vibe-Guys" }
+    ],
+    period: "2026.04.19 ~ 2026.05.17",
+    team: "FE (3), BE(2)",
+    role: "Frontend - 프론트엔드 팀장, FE 개발환경 구축 및 배포, 소셜 로그인 구현, 방 생성 기능 구현",
+    tags: ["React", "Nest.js", "Firebase", "Gemini API"],
+    contributions: [
+      {
+        title: "준비 중",
+        situation: "준비 중",
+        solution: "준비 중",
+        result: "준비 중"
+      }
+    ]
+  },
+  {
     title: "아이케어 AI (iCare AI) - 키즈노트",
     description: "AI 기반 영유아 스마트 리포트 및 보육 행정 솔루션",
     image: project2Img,
     github: [
-      { label: "Github Repository", url: "https://github.com/Legend-Vibe-Guys" }
+      { label: "Github URL", url: "https://github.com/Legend-Vibe-Guys" }
     ],
     period: "2026.04.06 ~ 2026.04.13",
     team: "FullStack (4)",
     role: "FullStack - 프로젝트 팀장, FE, BE 개발환경 구축 및 배포, firebase 기반 로그인 서비스 구현",
-    tags: ["React", "Nest", "Express", "Firebase", "Gemini API"],
+    tags: ["React", "Express", "Firebase", "Gemini API"],
     contributions: [
       {
         title: "Render 인프라 가용성 확보 및 Cold Start 문제 해결",
@@ -63,19 +84,19 @@ export const PROJECTS_DATA = [
   },
   {
     title: "범죄 취약 계층의 초동 대응을 위한 스마트 장치 및 AI 기반 실시간 대응 서비스",
-    description: "아동, 청소년 안전을 위해 다중 센서와 AI로 위험을 실시간 탐지하고, 보호자에게 즉각 경고 및 상황을 모니터링할 수 있는 아두이노 기반의 스마트 방범 시스템을 개발",
+    description: "다중 센서와 AI를 활용한 아동·청소년 실시간 위험 탐지 및 스마트 방범 시스템",
     image: project3Img,
     github: [
-      { label: "Github Repository", url: "https://github.com/The-cane-of-Min-Jeung" }
+      { label: "Github URL", url: "https://github.com/The-cane-of-Min-Jeung" }
     ],
     period: "2025.07.08 ~ 2025.11.07",
-    team: "Frontend (1), Backend (3), Hardware (1), AI (1)",
-    role: "Frontend",
+    team: "FE (1), BE (3), Hardware (1), AI (1)",
+    role: "FE",
     tags: ["Vue.js", "Kakao Map API", "Websocket"],
     contributions: [
       {
         title: "Kakao Map 기반 실시간 위치 관제 및 대시보드 UI 구축",
-        situation: "비상 알림 발생 시 관제자가 위험 위치(CCTV, 스마트 지팡이 위치)를 즉각 파악해야 하나, 지도 위 다수 마커 및 오버레이 렌더링 시 UI 지연 현상 발생 우려",
+        situation: "비상 알림 발생 시 관제자가 위험 위치(CCTV, 스마트 장치 위치)를 즉각 파악해야 하나, 지도 위 다수 마커 및 오버레이 렌더링 시 UI 지연 현상 발생 우려",
         solution: "카카오맵 API 커스텀 오버레이 모듈화(디바이스 상태 및 긴급 알림 단계별 동적 스타일링 적용) 및 Vite 환경에서 Kakao Maps SDK를 비동기식으로 안전하게 로드하는 헬퍼 함수 구축",
         result: "초기 지도 컴포넌트 렌더링 속도 개선 및 긴급 상황 발생 시 위치 핀 마킹 반응 속도 0.3초 이내 확보, NET 챌린지 캠프 시즌 12 은상(한국정보통신협회장상) 수상에 기여"
       },
