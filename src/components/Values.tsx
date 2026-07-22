@@ -10,28 +10,26 @@ const iconMap = {
 export default function Values() {
   return (
     <section>
-      <h2 className="text-5xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-2">
-        <span className="text-sky-500">#</span> Core Values
+      <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+        가치관
       </h2>
-      <div className="grid grid-cols-1 gap-6">
+      <div className="flex flex-col gap-5 md:gap-6">
         {VALUES_DATA.map((value: ValueItem, index: number) => {
           const Icon = iconMap[value.iconName];
           return (
             <div 
               key={index}
-              className="p-6 border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900 shadow-sm flex flex-col md:flex-row gap-6 hover:border-sky-500 dark:hover:border-sky-500 transition-colors"
+              className="flex flex-col gap-1 md:gap-2"
             >
-              <div className="w-12 h-12 rounded-lg bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0">
-                <Icon className="w-6 h-6" />
-              </div>
-              <div className="flex-1 flex flex-col gap-2">
-                <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
+              <div className="flex items-center gap-2">
+                <Icon className="w-4 h-4 md:w-5 md:h-5 text-sky-600 dark:text-sky-400" />
+                <h3 className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-200">
                   {value.title}
                 </h3>
-                <p className="text-2xl text-slate-500 dark:text-slate-400 leading-relaxed">
-                  {value.description}
-                </p>
               </div>
+              <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed ml-6 md:ml-7">
+                {value.description}
+              </p>
             </div>
           );
         })}

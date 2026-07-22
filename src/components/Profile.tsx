@@ -10,6 +10,10 @@ export default function Profile() {
   const blog = CONTACT_DATA.items.find(i => i.label === "Blog")?.href;
   const email = CONTACT_DATA.items.find(i => i.label === "E-mail")?.href;
 
+  const cleanUrl = (url: string) => {
+    return url.replace(/^(mailto:|https?:\/\/)/, '').replace(/\/$/, '');
+  };
+
   return (
     <div className="border-b border-slate-200 dark:border-slate-800 pb-8">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 text-center md:text-left">
@@ -41,27 +45,46 @@ export default function Profile() {
             {PROFILE_DATA.about}
           </p>
 
-          <div className="flex items-center gap-4 justify-center md:justify-start mt-1">
-            {email && (
-              <a href={email} className="text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors" aria-label="E-mail">
-                <Mail className="w-6 h-6 md:w-7 md:h-7" />
-              </a>
-            )}
-            {github && (
-              <a href={github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="GitHub">
-                <GithubIcon className="w-6 h-6 md:w-7 md:h-7" />
-              </a>
-            )}
-            {linkedin && (
-              <a href={linkedin} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors" aria-label="LinkedIn">
-                <LinkedinIcon className="w-6 h-6 md:w-7 md:h-7" />
-              </a>
-            )}
-            {blog && (
-              <a href={blog} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" aria-label="Blog">
-                <BookOpen className="w-6 h-6 md:w-7 md:h-7" />
-              </a>
-            )}
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start mt-2">
+            <div className="flex items-center gap-4">
+              {email && (
+                <a href={email} className="group relative text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors" aria-label="E-mail">
+                  <Mail className="w-6 h-6 md:w-7 md:h-7" />
+                  <div className="absolute top-full mt-2 md:mt-3 left-1/2 -translate-x-1/2 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-slate-800 dark:bg-slate-700 text-slate-100 text-[10px] sm:text-xs md:text-sm lg:text-base font-medium rounded-md md:rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap pointer-events-none z-10 shadow-md -translate-y-1 group-hover:translate-y-0 flex flex-col items-center">
+                    {cleanUrl(email)}
+                    <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-800 dark:bg-slate-700 rotate-45"></div>
+                  </div>
+                </a>
+              )}
+              {github && (
+                <a href={github} target="_blank" rel="noreferrer" className="group relative text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="GitHub">
+                  <GithubIcon className="w-6 h-6 md:w-7 md:h-7" />
+                  <div className="absolute top-full mt-2 md:mt-3 left-1/2 -translate-x-1/2 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-slate-800 dark:bg-slate-700 text-slate-100 text-[10px] sm:text-xs md:text-sm lg:text-base font-medium rounded-md md:rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap pointer-events-none z-10 shadow-md -translate-y-1 group-hover:translate-y-0 flex flex-col items-center">
+                    {cleanUrl(github)}
+                    <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-800 dark:bg-slate-700 rotate-45"></div>
+                  </div>
+                </a>
+              )}
+              {linkedin && (
+                <a href={linkedin} target="_blank" rel="noreferrer" className="group relative text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors" aria-label="LinkedIn">
+                  <LinkedinIcon className="w-6 h-6 md:w-7 md:h-7" />
+                  <div className="absolute top-full mt-2 md:mt-3 left-1/2 -translate-x-1/2 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-slate-800 dark:bg-slate-700 text-slate-100 text-[10px] sm:text-xs md:text-sm lg:text-base font-medium rounded-md md:rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap pointer-events-none z-10 shadow-md -translate-y-1 group-hover:translate-y-0 flex flex-col items-center">
+                    {cleanUrl(linkedin)}
+                    <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-800 dark:bg-slate-700 rotate-45"></div>
+                  </div>
+                </a>
+              )}
+              {blog && (
+                <a href={blog} target="_blank" rel="noreferrer" className="group relative text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors" aria-label="Blog">
+                  <BookOpen className="w-6 h-6 md:w-7 md:h-7" />
+                  <div className="absolute top-full mt-2 md:mt-3 left-1/2 -translate-x-1/2 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-slate-800 dark:bg-slate-700 text-slate-100 text-[10px] sm:text-xs md:text-sm lg:text-base font-medium rounded-md md:rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap pointer-events-none z-10 shadow-md -translate-y-1 group-hover:translate-y-0 flex flex-col items-center">
+                    {cleanUrl(blog)}
+                    <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-800 dark:bg-slate-700 rotate-45"></div>
+                  </div>
+                </a>
+              )}
+            </div>
+            
           </div>
         </div>
       </div>
