@@ -17,7 +17,7 @@ export const SKILLS_DATA = [
   },
   {
     category: "Infra",
-    items: ["Docker", "Github Actions"],
+    items: ["Docker", "Github Actions", "Vercel", "Render"],
   },
   {
     category: "AI Tools",
