@@ -24,10 +24,7 @@ export const OTHERS_DATA: OthersData = {
       title: "안양대학교 소프트웨어학과 졸업",
       period: "2020.03 ~ 2026.02",
     },
-    {
-      title: "안양대학교 지식재산융합과정 이수",
-      period: "2024.09 ~ 2026.02",
-    },
+
     {
       title: "시흥매화고등학교 졸업",
       period: "2017.03 ~ 2020.02",

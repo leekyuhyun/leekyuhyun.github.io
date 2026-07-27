@@ -12,7 +12,7 @@ export const VALUES_DATA: ValueItem[] = [
   },
   {
     title: "화면 구현을 넘어 서비스를 안정적으로 배포하고 운영합니다.",
-    description: "Vercel과 Render 환경에서 프론트엔드·백엔드 서비스를 직접 배포하고 운영했습니다. 외부 헬스체크 툴(UptimeRobot) 연동 및 주기적 활성화 스케줄러를 설계하여 프리티어 인프라의 Cold Start 제약을 극복하고 초기 응답 속도를 개선했습니다.",
+    description: "Vercel과 Render 환경에서 서비스를 직접 배포·운영하며, 외부 헬스체크(UptimeRobot)와 스케줄러를 도입해 Cold Start 제약을 극복하고 응답 속도를 개선했습니다.",
     iconName: "ShieldCheck",
   },
   {

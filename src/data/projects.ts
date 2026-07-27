@@ -2,7 +2,6 @@ import { StaticImageData } from "next/image";
 import project1Img from "../assets/images/project1.png";
 import project2Img from "../assets/images/project2.png";
 import project3Img from "../assets/images/project3.png";
-import project4Img from "../assets/images/project4.png";
 
 export interface ProjectFeature {
   title: string;
@@ -94,52 +93,6 @@ export const PROJECTS_DATA: Project[] = [
         situation: "HTTPS(프론트엔드)와 HTTP(백엔드) 간 Mixed Content 브라우저 보안 정책으로 API 및 웹소켓(채팅) 연결 차단 발생",
         solution: "팀원과 협의해 백엔드에 SSL 인증서를 적용하여 HTTPS로 격상하고, 프론트엔드에서 환경에 맞춰 동적으로 WSS 연결을 맺도록 개선",
         result: "우회 대신 인프라 레벨의 정공법으로 에러를 근본적으로 해결하여 채팅 서비스를 안정화하고 전체 보안 수준 향상"
-      }
-    ]
-  },
-  {
-    title: "널널 (Null Null)",
-    subtitle: "프로그래머스 웹 풀스택 9기 2차 프로젝트",
-    description: "안되는시간 빼고 널널한 시간 찾기",
-    overview: "소규모 그룹(스터디, 동아리 등)의 모임 시간을 정할 때 겪는 번거로움을 해결하기 위한 '역발상' 일정 조율 서비스입니다. 가능한 시간을 묻는 대신 '안되는 시간'만 블록 처리하여 입력 부담을 줄이고, 시스템이 최적의 시간과 장소를 자동으로 추천해 줍니다. 시간 결정과 장소 탐색을 하나의 흐름으로 연결해 끊김 없는 사용자 경험을 제공합니다.",
-    features: [
-      {
-        title: "NULL 입력 방식 (역발상 조율)",
-        description: "가능 시간을 일일이 선택하지 않고 '안되는 시간'만 드래그하여 입력 시간을 획기적으로 단축"
-      },
-      {
-        title: "자동 의사결정 및 장소 추천",
-        description: "전원 가용 시간 교집합 계산 및 출발지 무게중심 기반의 인근 장소를 스코어링하여 최적안 자동 제시"
-      },
-      {
-        title: "실시간 현황 및 알림 시스템",
-        description: "WebSocket 기반으로 참여자 입력 상태 실시간 트래킹 및 새로고침 없는 상태 동기화"
-      },
-      {
-        title: "무가입 참여 및 PWA 앱 경험",
-        description: "링크 접속 및 이름 입력만으로 즉시 참여 가능하며, PWA를 통해 앱 설치 없이도 네이티브 수준의 UX와 웹 푸시 알림 제공"
-      }
-    ],
-    image: project4Img,
-    github: [
-      { label: "Github Repository", url: "https://github.com/Legend-Vibe-Guys" }
-    ],
-    period: "2026.04.19 ~ 2026.05.17",
-    team: "FE (3), BE(2)",
-    role: "Frontend - 프론트엔드 팀장, FE 개발환경 구축 및 배포, 방 생성 기능 구현",
-    tags: ["Next.js", "React", "Nest.js", "Zustand", "TanStack Query", "Tailwind CSS", "Socket.IO", "Kakao Map API"],
-    contributions: [
-      {
-        title: "복잡한 폼 상태 관리 및 유효성 검증 최적화 (방 생성 기능)",
-        situation: "방 생성 시 제목, 최대 30일의 기간, 시간대 설정 등 복잡한 입력 데이터를 다뤄야 하며, 잦은 상태 변경으로 인한 렌더링 지연 우려",
-        solution: "react-hook-form을 도입하여 비제어 컴포넌트 방식으로 불필요한 리렌더링을 방지하고, Zod를 결합하여 스키마 기반의 선언적 유효성 검증 로직 구현",
-        result: "복잡한 방 생성 폼의 렌더링 성능 최적화 및 런타임 타입 안정성을 확보하여 사용자 입력 오류 사전 차단"
-      },
-      {
-        title: "프론트엔드 아키텍처 및 CI/CD 자동화 구축",
-        situation: "다수의 프론트엔드 팀원(3명)이 협업하는 상황에서 코드 스타일의 파편화 방지 및 일관된 배포/품질 관리 파이프라인 필요",
-        solution: "Next.js 기반의 환경에서 ESLint, Prettier, Husky를 연동하여 자동 검증을 강제하고, Vercel을 활용해 브랜치별 프리뷰 및 자동 배포 파이프라인(CI/CD) 구축",
-        result: "결함 코드 유입 차단 및 배포 자동화를 통해 팀 전체의 코드 품질을 상향 평준화하고 개발 및 QA 생산성 극대화"
       }
     ]
   },
