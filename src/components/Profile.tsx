@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { PROFILE_DATA } from "../data/profile";
 import { CONTACT_DATA } from "../data/contact";
-import { Mail, BookOpen } from "lucide-react";
+import { Mail, BookOpen, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 
 export default function Profile() {
@@ -83,8 +83,23 @@ export default function Profile() {
                   </div>
                 </a>
               )}
+              {PROFILE_DATA.resumeUrl && (
+                <a
+                  href={PROFILE_DATA.resumeUrl}
+                  download={PROFILE_DATA.resumeFileName || true}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative text-slate-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+                  aria-label="Resume (PDF)"
+                >
+                  <FileText className="w-6 h-6 md:w-7 md:h-7" />
+                  <div className="absolute top-full mt-2 md:mt-3 left-1/2 -translate-x-1/2 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-slate-800 dark:bg-slate-700 text-slate-100 text-[10px] sm:text-xs md:text-sm lg:text-base font-medium rounded-md md:rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap pointer-events-none z-10 shadow-md -translate-y-1 group-hover:translate-y-0 flex flex-col items-center">
+                    Resume (PDF)
+                    <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-800 dark:bg-slate-700 rotate-45"></div>
+                  </div>
+                </a>
+              )}
             </div>
-            
           </div>
         </div>
       </div>
