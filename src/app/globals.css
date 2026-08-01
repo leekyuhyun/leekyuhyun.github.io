@@ -3,6 +3,7 @@
 /* Override the default dark variant to use the .dark selector for next-themes */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
 @font-face {
   font-family: 'Dongle';
   src: url('../assets/font/Dongle-Light.ttf') format('truetype');
@@ -26,21 +27,22 @@
   font-style: normal;
   font-display: swap;
 }
+*/
 
 @theme {
-  --font-sans: 'Dongle';
+  --font-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  /* Dongle 폰트는 기본 크기가 다소 작으므로, 전체적으로 약 1.25배 정도만 부드럽게 확대합니다. */
-  --text-xs: 1rem;
-  --text-sm: 1.125rem;
-  --text-base: 1.25rem;
-  --text-lg: 1.375rem;
-  --text-xl: 1.5rem;
-  --text-2xl: 1.75rem;
-  --text-3xl: 2.25rem;
-  --text-4xl: 2.75rem;
-  --text-5xl: 3.5rem;
-  --text-6xl: 4.5rem;
+  /* 동글(Dongle) 폰트는 일반 고딕체에 비해 실제 글자 크기(자형)가 약 60% 수준으로 작기 때문에, 화면상 시각적 크기를 동글 폰트와 정확히 일치시키도록 0.6배(60%) 수치로 조정합니다. */
+  --text-xs: 0.6rem;
+  --text-sm: 0.7rem;
+  --text-base: 0.75rem;
+  --text-lg: 0.85rem;
+  --text-xl: 0.9rem;
+  --text-2xl: 1.05rem;
+  --text-3xl: 1.35rem;
+  --text-4xl: 1.65rem;
+  --text-5xl: 2.1rem;
+  --text-6xl: 2.7rem;
 }
 
 :root {
