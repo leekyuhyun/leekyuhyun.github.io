@@ -1,41 +1,7 @@
-import { StaticImageData } from "next/image";
 import project1Img from "../assets/images/project1.png";
 import project2Img from "../assets/images/project2.png";
 import project3Img from "../assets/images/project3.png";
-
-export interface ProjectFeature {
-  title: string;
-  description: string;
-}
-
-export interface ProjectContribution {
-  title: string;
-  situation: string;
-  solution: string;
-  result: string;
-}
-
-export interface ProjectLink {
-  label: string;
-  url: string;
-}
-
-export interface Project {
-  title: string;
-  category: string;
-  award?: string;
-  subtitle?: string;
-  description: string;
-  overview?: string;
-  features?: ProjectFeature[];
-  image?: StaticImageData | string;
-  github?: ProjectLink[];
-  period?: string;
-  team?: string;
-  role?: string;
-  tags: string[];
-  contributions?: ProjectContribution[];
-}
+import type { Project } from "../types/project";
 
 export const PROJECTS_DATA: Project[] = [
   {

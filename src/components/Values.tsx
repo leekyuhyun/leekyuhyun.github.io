@@ -1,5 +1,6 @@
 import { Zap, Users, ShieldCheck } from "lucide-react";
 import { VALUES_DATA, ValueItem } from "../data/values";
+import SectionHeader from "./common/SectionHeader";
 
 const iconMap = {
   Zap: Zap,
@@ -10,12 +11,7 @@ const iconMap = {
 export default function Values() {
   return (
     <section className="w-full">
-      <div className="section-header !mb-6">
-        <p className="section-eyebrow">How I work</p>
-        <h2 className="section-title break-keep">
-          업무 방식
-        </h2>
-      </div>
+      <SectionHeader eyebrow="How I work" title="업무 방식" compact />
 
       <div className="grid gap-7 md:grid-cols-3 md:gap-8">
         {VALUES_DATA.map((value: ValueItem, index: number) => {

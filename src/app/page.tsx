@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Skills from "../components/Skills";
-import Projects from "../components/Projects";
+import Projects from "../components/project/Projects";
 import Profile from "../components/Profile";
 import Footer from "../components/Footer";
 import Others from "../components/Others";
@@ -12,12 +12,12 @@ export default function Home() {
     <div className="min-h-screen overflow-x-clip bg-slate-50 font-sans text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
       <Header />
 
-      <main className="max-w-6xl mx-auto px-5 sm:px-8 pb-16 md:pb-24">
+      <main className="mx-auto max-w-6xl px-5 pb-16 sm:px-8 md:pb-24">
         <section aria-label="개발자 소개">
           <Profile />
         </section>
 
-        <section id="projects" className="content-section !border-b-0 !pb-0 md:!pt-20">
+        <section id="projects" className="content-section border-b-0! pb-0! md:pt-20!">
           <Projects />
         </section>
 
@@ -26,7 +26,7 @@ export default function Home() {
         </section>
 
         <section id="skills" className="content-section relative">
-          <div className="pointer-events-none absolute inset-y-0 left-1/2 -z-0 w-screen -translate-x-1/2 bg-sky-50/60 dark:bg-sky-950/20" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen -translate-x-1/2 bg-sky-50/60 dark:bg-sky-950/20" aria-hidden="true" />
           <div className="relative z-10"><Skills /></div>
         </section>
 

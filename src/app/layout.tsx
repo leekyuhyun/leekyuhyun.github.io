@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
+import CustomCursor from "../components/common/CustomCursor";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://leekyuhyun.github.io"),
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="ko" className="scroll-smooth" suppressHydrationWarning>
       <body className="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300 break-keep">
         <ThemeProvider>
+          <CustomCursor />
           {children}
         </ThemeProvider>
       </body>

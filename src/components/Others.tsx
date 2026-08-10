@@ -1,5 +1,6 @@
 import { OTHERS_DATA } from "../data/others";
 import { GraduationCap, Award, Shield, Briefcase, Compass } from "lucide-react";
+import SectionHeader from "./common/SectionHeader";
 
 export default function Others() {
   const sections = [
@@ -32,10 +33,7 @@ export default function Others() {
 
   return (
     <section>
-      <div className="section-header">
-        <p className="section-eyebrow">Background</p>
-        <h2 className="section-title">이력과 활동</h2>
-      </div>
+      <SectionHeader eyebrow="Background" title="이력과 활동" />
 
       <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
         {sections.map((section, idx) => {

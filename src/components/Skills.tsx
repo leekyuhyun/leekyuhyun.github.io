@@ -1,5 +1,6 @@
 import { SKILLS_DATA } from "../data/skills";
 import type { IconType } from "react-icons";
+import SectionHeader from "./common/SectionHeader";
 import {
   SiExpress,
   SiFirebase,
@@ -43,17 +44,13 @@ const SKILL_ICONS: Record<string, IconType> = {
 export default function Skills() {
   return (
     <section aria-labelledby="skills-heading">
-      <div className="section-header md:flex md:items-end md:justify-between">
-        <div>
-          <p className="section-eyebrow">Capabilities</p>
-          <h2 id="skills-heading" className="section-title">
-            기술과 도구
-          </h2>
-        </div>
-        <p className="section-description md:text-right">
-          프로젝트에서 직접 설계하고 구현한 기술을 중심으로 정리했습니다.
-        </p>
-      </div>
+      <SectionHeader
+        eyebrow="Capabilities"
+        title="기술과 도구"
+        id="skills-heading"
+        description="프로젝트에서 직접 설계하고 구현한 기술을 중심으로 정리했습니다."
+        split
+      />
 
       <div className="divide-y divide-sky-200/70 border-y border-sky-200/70 dark:divide-sky-400/15 dark:border-sky-400/15">
         {SKILLS_DATA.map((group) => (

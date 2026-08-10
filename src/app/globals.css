@@ -3,32 +3,6 @@
 /* Override the default dark variant to use the .dark selector for next-themes */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/*
-@font-face {
-  font-family: 'Dongle';
-  src: url('../assets/font/Dongle-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Dongle';
-  src: url('../assets/font/Dongle-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Dongle';
-  src: url('../assets/font/Dongle-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-*/
-
 @theme {
   --font-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
@@ -103,6 +77,66 @@ body {
 ::selection {
   color: #0f172a;
   background: #bae6fd;
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .custom-cursor-enabled,
+  .custom-cursor-enabled * {
+    cursor: none !important;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 18px;
+    height: 22px;
+    pointer-events: none;
+    opacity: 0;
+    will-change: transform;
+  }
+
+  .custom-cursor--visible {
+    opacity: 1;
+  }
+
+  .custom-cursor__outline,
+  .custom-cursor__core {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    clip-path: polygon(0 0, 100% 66%, 59% 70%, 78% 100%, 61% 100%, 43% 72%, 0 100%);
+    transition: background-color 150ms ease, transform 150ms ease;
+  }
+
+  .custom-cursor__outline {
+    width: 18px;
+    height: 22px;
+    background: #38bdf8;
+  }
+
+  .custom-cursor__core {
+    top: 2px;
+    left: 2px;
+    width: 13px;
+    height: 17px;
+    background: #0f172a;
+  }
+
+  .dark .custom-cursor__core {
+    background: #f8fafc;
+  }
+
+  .custom-cursor--interactive .custom-cursor__outline,
+  .custom-cursor--interactive .custom-cursor__core {
+    transform: scale(1.12);
+  }
+
+  .custom-cursor--interactive .custom-cursor__core {
+    background: #0ea5e9;
+  }
 }
 
 .dark body {
