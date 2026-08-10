@@ -1,25 +1,82 @@
 import { SKILLS_DATA } from "../data/skills";
+import type { IconType } from "react-icons";
+import {
+  SiExpress,
+  SiFirebase,
+  SiGit,
+  SiJavascript,
+  SiMockserviceworker,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiRender,
+  SiSocketdotio,
+  SiSupabase,
+  SiSwagger,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+  SiVuedotjs,
+} from "react-icons/si";
+
+const SKILL_ICONS: Record<string, IconType> = {
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  "Vue.js": SiVuedotjs,
+  TypeScript: SiTypescript,
+  JavaScript: SiJavascript,
+  "Tailwind CSS": SiTailwindcss,
+  "Node.js": SiNodedotjs,
+  Express: SiExpress,
+  "Socket.IO": SiSocketdotio,
+  "REST API": SiSwagger,
+  PostgreSQL: SiPostgresql,
+  Supabase: SiSupabase,
+  Firebase: SiFirebase,
+  Vercel: SiVercel,
+  Render: SiRender,
+  MSW: SiMockserviceworker,
+  Git: SiGit,
+};
 
 export default function Skills() {
   return (
-    <section>
-      <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
-        기술 스택
-      </h2>
-      <div className="flex flex-col gap-5 md:gap-6">
+    <section aria-labelledby="skills-heading">
+      <div className="section-header md:flex md:items-end md:justify-between">
+        <div>
+          <p className="section-eyebrow">Capabilities</p>
+          <h2 id="skills-heading" className="section-title">
+            기술과 도구
+          </h2>
+        </div>
+        <p className="section-description md:text-right">
+          프로젝트에서 직접 설계하고 구현한 기술을 중심으로 정리했습니다.
+        </p>
+      </div>
+
+      <div className="divide-y divide-sky-200/70 border-y border-sky-200/70 dark:divide-sky-400/15 dark:border-sky-400/15">
         {SKILLS_DATA.map((group) => (
-          <div key={group.category} className="flex flex-col gap-2 md:gap-3">
-            <h3 className="text-sm md:text-base font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+          <div key={group.category} className="grid gap-3 py-4 sm:grid-cols-[9rem_1fr] sm:items-center">
+            <h3 className="meta-label">
               {group.category}
             </h3>
             <ul className="flex flex-wrap gap-2">
-              {group.items.map((skill) => (
-                <li key={skill}>
-                  <span className="inline-block px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-sky-600 dark:text-sky-400 rounded-[20px] text-sm md:text-base font-medium transition-colors cursor-default">
-                    {skill}
-                  </span>
-                </li>
-              ))}
+              {group.items.map((skill) => {
+                const Icon = SKILL_ICONS[skill];
+
+                return (
+                  <li
+                    key={skill}
+                    className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 py-1.5 pl-1.5 pr-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-sky-300 hover:text-sky-700 hover:shadow-sm dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-sky-400/40 dark:hover:text-sky-300"
+                  >
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-600 transition-colors group-hover:bg-sky-200 dark:bg-sky-400/10 dark:text-sky-400 dark:group-hover:bg-sky-400/20">
+                      {Icon && <Icon className="size-4" aria-hidden="true" />}
+                    </span>
+                    <span>{skill}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}

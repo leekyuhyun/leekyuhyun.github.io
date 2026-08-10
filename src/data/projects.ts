@@ -22,6 +22,8 @@ export interface ProjectLink {
 
 export interface Project {
   title: string;
+  category: string;
+  award?: string;
   subtitle?: string;
   description: string;
   overview?: string;
@@ -38,8 +40,9 @@ export interface Project {
 export const PROJECTS_DATA: Project[] = [
   {
     title: "은밀하게 위대하게",
+    category: "AI 기반 개발자 포트폴리오 및 뉴스 서비스",
     subtitle: "프로그래머스 웹 풀스택 9기 최종 프로젝트",
-    description: "가장 완벽한 보호색, 모니터 뒤에서 당당하게 확인하는 나만의 시크릿 포트폴리오",
+    description: "개발자에게 익숙한 IDE 화면에서 주식 포트폴리오를 관리하고 AI 요약 뉴스를 확인하는 서비스",
     overview: "개발자가 온종일 띄워두는 VS Code 화면으로 완벽하게 위장하여 주변 시선 신경 쓰지 않고 당당하게 주식 시세와 포트폴리오를 관리할 수 있는 웹 서비스입니다. 일반적인 주식 앱의 노출 위험을 원천 차단하고, 오직 개발자들만을 위한 UI/UX와 실시간 소통 공간을 제공합니다.",
     features: [
       {
@@ -69,35 +72,37 @@ export const PROJECTS_DATA: Project[] = [
     ],
     image: project1Img,
     github: [
-      { label: "Github URL", url: "https://github.com/Secretly-Greatly-web" }
+      { label: "Frontend", url: "https://github.com/Secretly-Greatly-web/frontend" },
+      { label: "News Worker", url: "https://github.com/Secretly-Greatly-web/news" }
     ],
     period: "2026.05.18 ~ 2026.06.19",
     team: "FE(2), BE(1), FullStack(3)",
-    role: "FullStack - FE 팀장, 개발환경 구축 및 배포, 뉴스 서버 구축, 채팅 기능 구현",
-    tags: ["Next.js", "Nest.js", "Express", "Gemini API", "Orval", "Mock Service Worker", "Socket.IO"],
+    role: "프론트엔드 팀장 · 풀스택 개발 - 프론트엔드 개발 환경과 품질 기준 구축, 뉴스 워커 구현",
+    tags: ["Next.js", "TypeScript", "Express", "Supabase", "Gemini API", "MSW", "node-cron"],
     contributions: [
       {
-        title: "OpenAPI 기반 API 코드 자동화 및 모킹(Mocking) 환경 구축",
-        situation: "API 개발 지연으로 인한 프론트엔드 병목 현상 및 잦은 명세 변경에 따른 수동 타입 수정의 비효율성 발생",
-        solution: "Orval을 도입해 OpenAPI 명세 기반으로 API 코드 및 타입을 자동 생성하고, MSW를 활용해 독립적인 모킹 테스트 환경 구축",
-        result: "프론트/백엔드 병렬 개발로 일정 단축 및 타입 동기화 자동화를 통한 휴먼 에러 방지, 디버깅 시간 획기적 절감"
+        title: "백엔드와 독립적인 프론트엔드 검증 환경 구축",
+        situation: "백엔드 API가 완성되기 전에는 인증·주식·헬스체크 화면의 정상 흐름과 오류 흐름을 검증하기 어려웠습니다.",
+        solution: "MSW로 실제 API 계약을 반영한 모킹 환경을 구성하고 기능별 정상·오류 응답을 분리했습니다.",
+        result: "백엔드 진행 상황과 관계없이 주요 사용자 흐름을 독립적으로 개발하고 검증할 수 있게 했습니다."
       },
       {
-        title: "뉴스 데이터 적재 파이프라인 최적화",
-        situation: "주기적인 뉴스 스크래핑 시 발생할 수 있는 외부 AI API Rate Limit 초과, 비용 낭비, 데이터 중복 적재 문제 예상",
-        solution: "DB 조회로 기존 기사를 사전 필터링하고, 호출 딜레이 제어(Throttle) 큐 설계 및 upsert 기반의 배치 자동 적재 구현",
-        result: "불필요한 API 호출을 차단해 운영 비용을 최적화하고 Rate Limit 초과 없이 안정적이고 효율적인 데이터 적재 완성"
+        title: "커밋 단계 코드 품질 기준 자동화",
+        situation: "여러 프론트엔드 개발자가 함께 작업하면서 파일·폴더·타입 네이밍과 코드 스타일을 일관되게 유지할 기준이 필요했습니다.",
+        solution: "네이밍 검사와 ESLint·Prettier·Husky·lint-staged를 연동해 규칙을 커밋 단계에서 검사하도록 구성했습니다.",
+        result: "개발 규칙을 문서와 자동 검사로 공유해 팀이 같은 기준으로 코드를 작성하도록 만들었습니다."
       },
       {
-        title: "배포 환경의 프로토콜 불일치(Mixed Content) 장애 해결",
-        situation: "HTTPS(프론트엔드)와 HTTP(백엔드) 간 Mixed Content 브라우저 보안 정책으로 API 및 웹소켓(채팅) 연결 차단 발생",
-        solution: "팀원과 협의해 백엔드에 SSL 인증서를 적용하여 HTTPS로 격상하고, 프론트엔드에서 환경에 맞춰 동적으로 WSS 연결을 맺도록 개선",
-        result: "우회 대신 인프라 레벨의 정공법으로 에러를 근본적으로 해결하여 채팅 서비스를 안정화하고 전체 보안 수준 향상"
+        title: "뉴스 수집·요약 워커와 중복 방지 파이프라인 구축",
+        situation: "주기적인 뉴스 수집 과정에서 중복 기사 적재와 불필요한 AI 호출, Rate Limit 문제가 발생할 수 있었습니다.",
+        solution: "Express와 node-cron으로 수집 워커를 구성하고 Cheerio 본문 스크래핑, Gemini 구조화 요약·태그 분류, Supabase 적재를 연결했습니다. 기사 URL 선조회와 UNIQUE 제약조건·upsert도 함께 적용했습니다.",
+        result: "신규 기사만 수집·요약하도록 데이터 흐름을 구성하고, 호출 간격 제어로 외부 API 제한에 대응했습니다."
       }
     ]
   },
   {
     title: "아이케어 AI (iCare AI) - 키즈노트",
+    category: "AI 보육 리포트 서비스",
     subtitle: "KIT 바이브코딩 공모전",
     description: "AI 기반 영유아 스마트 리포트 및 보육 행정 솔루션",
     overview: "보육 교사들의 과도한 행정 업무 부담을 줄이고 학부모에게 투명한 발달 지표를 제공하기 위해 기획된 'AI 기반 스마트 보육 플랫폼'입니다. 파편화된 일상 관찰 기록, 사진, 출결 데이터를 하나의 플랫폼으로 통합하고, 구글의 최신 Gemini API를 활용해 단편적인 기록들을 객관적이고 전문적인 '월간 스마트 발달 리포트'로 자동 변환하여 제공합니다.",
@@ -121,29 +126,38 @@ export const PROJECTS_DATA: Project[] = [
     ],
     image: project2Img,
     github: [
-      { label: "Github URL", url: "https://github.com/Legend-Vibe-Guys" }
+      { label: "Frontend", url: "https://github.com/Legend-Vibe-Guys/Frontend" },
+      { label: "Backend", url: "https://github.com/Legend-Vibe-Guys/Backend" }
     ],
     period: "2026.04.06 ~ 2026.04.13",
     team: "FullStack (4)",
-    role: "FullStack - 프로젝트 팀장, FE/BE 개발환경 구축 및 배포, Firebase 기반 로그인 서비스 구현",
-    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Node.js", "Express", "Firebase Auth", "Gemini API", "Cloudinary"],
+    role: "풀스택 팀장 - React·Express 개발 환경 구축, Firebase 인증·회원가입 API 구현",
+    tags: ["React", "Express", "Firebase Admin", "Firestore", "Express Validator", "Swagger"],
     contributions: [
       {
-        title: "Render 인프라 가용성 확보 및 Cold Start 문제 해결",
-        situation: "Render 프리 티어 배포 환경 특성상, 일정 시간 요청이 없으면 서버가 절전 모드로 전환되는 Cold Start 이슈 발생\n이로 인한 초기 요청 시의 심각한 응답 지연으로 사용자 경험(UX)이 저하되는 문제 인식",
-        solution: "UptimeRobot 연동 : 외부 헬스체크 툴을 도입하고 백엔드 내부에 경량화된 /health 엔드포인트 구현\n주기적 활성화 : 5분 주기 가벼운 헬스체크 요청을 자동화하여 서버가 상시 활성 상태(Warm-up)를 유지하도록 설정",
-        result: "서버 절전 모드 진입을 차단하여 초기 응답 속도 및 서비스 가용성 개선\n추가적인 인프라 비용 지출 없이 프리 티어 환경의 제약을 극복한 효율적인 해결책 제시"
+        title: "Firebase 인증·회원가입 API 구현",
+        situation: "프론트엔드에서 전달된 Firebase 토큰을 서버에서 검증하고 사용자와 원아 정보를 일관되게 저장해야 했습니다.",
+        solution: "Firebase Admin 기반 토큰 인증과 회원가입 API를 구현하고, Batch Write로 사용자·원아 정보를 함께 저장했습니다.",
+        result: "인증과 초기 데이터 생성을 하나의 흐름으로 연결해 회원가입 과정의 데이터 일관성을 확보했습니다."
       },
       {
-        title: "Firebase 기반 효율적인 인증 파이프라인 구축",
-        situation: "Firebase Auth 도입 후, 토큰 만료에 따른 세션 끊김 현상 및 프론트엔드 전역 상태와의 동기화 불일치 문제 발생\n안전하고 끊김 없는 사용자 인증 상태 유지를 위한 인증 상태 통합 관리 필요성 인식",
-        solution: "실시간 상태 동기화 : Firebase의 onIdTokenChanged를 활용해 토큰 및 인증 상태 변화를 실시간 감지하고 전역 상태에 반영\n인증 자동화 인터셉터 : API 팩토리(Axios 인터셉터 등)를 설계하여 API 요청 시 유효한 인증 토큰이 헤더에 자동 주입되도록 구현",
-        result: "불필요한 로그아웃 없는 자동 세션 갱신 및 끊김 없는 사용자 경험(UX) 제공\nAPI 호출 전 토큰 유효성을 검증하는 안전하고 효율적인 프론트엔드 보안 파이프라인 구축"
+        title: "API 검증·오류 처리와 팀 개발 환경 표준화",
+        situation: "짧은 개발 기간 안에 입력 검증과 오류 응답, API 명세, 코드 품질 기준을 팀 전체가 일관되게 적용해야 했습니다.",
+        solution: "Express Validator와 전역 오류 처리를 공통화하고 Swagger로 인증 API를 문서화했습니다. React·Express 환경에 ESLint·Prettier·Husky도 구성했습니다.",
+        result: "API 사용 기준과 코드 품질 기준을 한곳에 정리해 프론트엔드와 백엔드의 협업 기준을 통일했습니다."
+      },
+      {
+        title: "Render 데모 환경의 Cold Start 완화",
+        situation: "Render 데모 서버가 유휴 상태 이후 첫 요청에서 지연되는 문제가 있었습니다.",
+        solution: "경량 헬스체크 API를 구현하고 외부 모니터링 서비스가 주기적으로 상태를 확인하도록 구성했습니다.",
+        result: "데모 환경에서 첫 요청 시 발생하는 대기 시간을 완화했습니다."
       }
     ]
   },
   {
     title: "범죄 취약 계층의 초동 대응을 위한 스마트 장치 및 AI 기반 실시간 대응 서비스",
+    category: "AI·IoT 실시간 안전 관제 시스템",
+    award: "NET 챌린지 캠프 시즌 12 은상",
     subtitle: "K-디지털 챌린지 : NET 챌린지 캠프 시즌 12 공모전",
     description: "다중 센서와 AI를 활용한 아동·청소년 실시간 위험 탐지 및 스마트 방범 시스템",
     overview: "아동 및 청소년 등 범죄 취약 계층의 안전을 보장하기 위한 스마트 장치(아두이노) 기반 실시간 관제 솔루션입니다. 기기에서 수집된 다중 센서(충격, 소리, GPS)와 음성 데이터를 AI 모델(Whisper, ChatGPT 등)이 실시간으로 분석하여 위기 상황을 판단합니다. 프론트엔드는 WebSocket을 활용한 통합 관제 대시보드와 지도 기반 위치 추적 기능을 제공하여, 사용자가 조작하지 못하는 위급 상황에서도 관계 기관 및 보호자의 신속한 초동 대응을 가능하게 합니다.",
@@ -167,24 +181,30 @@ export const PROJECTS_DATA: Project[] = [
     ],
     image: project3Img,
     github: [
-      { label: "Github URL", url: "https://github.com/The-cane-of-Min-Jeung" }
+      { label: "Frontend", url: "https://github.com/The-cane-of-Min-Jeung/frontend" }
     ],
-    period: "2025.07.08 ~ 2025.11.07",
+    period: "2025.07.08 ~ 2025.11.14",
     team: "FE (1), BE (3), H/W (1), AI (1)",
-    role: "Frontend - 실시간 관제 대시보드 설계 및 UI/UX 구현, 위치 데이터 렌더링 최적화",
-    tags: ["Vue.js", "Vite", "Kakao Map API", "Websocket", "Bootstrap"],
+    role: "프론트엔드 전담 개발 - 실시간 관제 대시보드와 기기·상황·알림 관리 기능 구현",
+    tags: ["Vue.js", "Axios", "WebSocket", "Kakao Map API"],
     contributions: [
       {
-        title: "Kakao Map 기반 실시간 위치 관제 및 대시보드 UI 구축",
-        situation: "비상 알림 발생 시 관제자가 위험 위치(CCTV, 스마트 장치 위치)를 즉각 파악해야 하나, 지도 위 다수 마커 및 오버레이 렌더링 시 UI 지연 현상 발생 우려",
-        solution: "카카오맵 API 커스텀 오버레이 모듈화(디바이스 상태 및 긴급 알림 단계별 동적 스타일링 적용) 및 Vite 환경에서 Kakao Maps SDK를 비동기식으로 안전하게 로드하는 헬퍼 함수 구축",
-        result: "초기 지도 컴포넌트 렌더링 속도 개선 및 긴급 상황 발생 시 위치 핀 마킹 반응 속도 0.3초 이내 확보, NET 챌린지 캠프 시즌 12 은상(한국정보통신협회장상) 수상에 기여"
+        title: "WebSocket 기반 실시간 관제 UI 구현",
+        situation: "긴급 이벤트의 경고·위험·종료 상태와 연결 대기·실패·데이터 없음 상태를 화면에서 명확하게 구분해야 했습니다.",
+        solution: "WebSocket 이벤트를 상황·알림 대시보드와 연동하고 상태별 로딩·예외 흐름과 UI 갱신 규칙을 구현했습니다.",
+        result: "관제자가 실시간 상태 변화와 연결 문제를 구분해 확인할 수 있는 관제 흐름을 완성했습니다."
       },
       {
-        title: "컴포넌트 재사용성 강화 및 서비스 상태 흐름(State Flow) 제어",
-        situation: "장치 등록, 히스토리 조회, 상황 알림 등 다수의 관제 화면 개발 시 반복되는 테이블/카드/모달 UI로 인한 코드 중복 발생",
-        solution: "공통 UI를 도메인 단위 컴포넌트로 세분화하여 라우터 뷰 간 재사용성을 극대화하고, 도메인별 API 통신 모듈을 분리 구축하여 백엔드 API 명세 변경 시 프론트엔드 영향 범위 최소화",
-        result: "UI 모듈화 및 API 레이어 분리를 통해 신규 화면 개발 및 유지보수 생산성 증대, API 실패/성공 상태에 따른 에러 바운더리 모달 처리로 사용자 경험(UX) 개선"
+        title: "위험 위치와 주변 CCTV 지도 시각화",
+        situation: "위험 발생 지점과 주변 관제 자원을 한 화면에서 빠르게 파악할 수 있어야 했습니다.",
+        solution: "Kakao Map에 위험 위치와 반경 200m 내 CCTV를 마커로 표시하고 관리기관·카메라 수·해상도 등의 상세 정보를 제공했습니다.",
+        result: "위험 위치와 주변 CCTV 정보를 지도 기반 관제 화면에서 함께 확인할 수 있게 했습니다."
+      },
+      {
+        title: "관제 기능 모듈화와 조회 흐름 개선",
+        situation: "기기 관리·상황·알림 화면에서 반복 UI와 API 호출 로직이 늘어나 수정 범위가 커질 수 있었습니다.",
+        solution: "반복 UI를 기능 단위 컴포넌트로 분리하고 API 호출을 서비스 계층으로 격리했습니다. AI 분석 히스토리에 최신순 정렬·페이지네이션·UTC→KST 변환도 적용했습니다.",
+        result: "중복 코드를 줄이고 기기·관제 기록을 일관된 방식으로 조회·관리할 수 있게 했습니다."
       }
     ]
   },

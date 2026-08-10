@@ -1,30 +1,22 @@
 export const SKILLS_DATA = [
   {
-    category: "Language",
-    items: ["JavaScript", "TypeScript"],
-  },
-  {
     category: "Frontend",
-    items: ["React", "Next.js", "Vue.js", "TailwindCSS"],
+    items: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "Tailwind CSS"],
   },
   {
     category: "Backend",
-    items: ["Express", "Socket.IO"],
+    items: ["Node.js", "Express", "Socket.IO", "REST API"],
   },
   {
-    category: "DB & BaaS",
-    items: ["MySQL", "PostgreSQL", "Supabase", "Firebase"],
+    category: "DB · BaaS",
+    items: ["PostgreSQL", "Supabase", "Firebase"],
   },
   {
-    category: "Infra",
-    items: ["Docker", "Github Actions", "Vercel", "Render"],
+    category: "Infra · Deployment",
+    items: ["Vercel", "Render"],
   },
   {
-    category: "AI Tools",
-    items: ["Gemini", "Claude Code"],
+    category: "Tools",
+    items: ["MSW", "Git"],
   },
-  {
-    category: "Collaboration",
-    items: ["Git", "Github", "Slack", "Notion"],
-  }
 ];

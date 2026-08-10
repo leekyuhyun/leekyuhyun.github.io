@@ -4,40 +4,49 @@ export default function Blog() {
   if (!BLOG_DATA || BLOG_DATA.length === 0) return null;
 
   return (
-    <section className="pt-4 md:pt-8">
-      <div className="flex items-center gap-3 mb-6 md:mb-8 border-b border-slate-200 dark:border-slate-700 pb-3">
-        <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-200">기술 블로그</h2>
-        <span className="text-sm md:text-base font-bold text-sky-500 bg-sky-100 dark:bg-sky-900/30 px-3 py-0.5 md:py-1 rounded-full">
-          {BLOG_DATA.length}
-        </span>
+    <section aria-labelledby="blog-heading">
+      <div className="section-header !mb-6">
+        <p className="section-eyebrow">Writing</p>
+        <div className="mt-2 flex items-center gap-2">
+          <h2 id="blog-heading" className="section-title !mt-0">
+            관련 기술 기록
+          </h2>
+          <span className="text-xs font-bold text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-900/30 px-2 py-0.5 rounded-full">
+            {BLOG_DATA.length}
+          </span>
+        </div>
+        <p className="section-description">
+          프로젝트에서 마주한 문제와 해결 과정을 정리했습니다.
+        </p>
       </div>
 
-      <div className="flex flex-col gap-4 md:gap-6">
+      <ul className="divide-y divide-slate-200 dark:divide-slate-800 border-t border-slate-300 dark:border-slate-700">
         {BLOG_DATA.map((post, index) => (
-          <a
-            key={index}
-            href={post.url}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex flex-col gap-2 p-4 md:p-6 rounded-2xl transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:shadow-md border border-slate-100 dark:border-slate-800/60 hover:border-sky-100 dark:hover:border-sky-900/50"
-          >
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-1">
-               <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-sky-500 transition-colors flex items-center gap-2">
-                 {post.title}
-                 <svg className="w-5 h-5 text-sky-500 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                 </svg>
-               </h3>
-               <span className="text-xs md:text-sm font-semibold text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-900/20 px-2.5 py-1 rounded-lg border border-sky-100/50 dark:border-sky-800/30 self-start md:self-auto shrink-0">
-                 {post.tag}
-               </span>
-            </div>
-            <p className="text-base text-slate-600 dark:text-slate-400 line-clamp-2 md:line-clamp-3 leading-relaxed mt-1">
-              {post.description}
-            </p>
-          </a>
+          <li key={index}>
+            <a
+              href={post.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group grid grid-cols-[auto_1fr_auto] items-start gap-x-3 gap-y-1 py-4 transition-colors"
+            >
+              <span className="mt-0.5 text-xs font-bold text-sky-600 dark:text-sky-400">
+                {post.tag}
+              </span>
+              <span className="min-w-0">
+                <span className="block text-base font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                  {post.title}
+                </span>
+                <span className="block mt-1 text-sm text-slate-500 dark:text-slate-400 line-clamp-1">
+                  {post.description}
+                </span>
+              </span>
+              <span aria-hidden="true" className="text-slate-400 group-hover:text-sky-500 group-hover:translate-x-0.5 transition-all">
+                ↗
+              </span>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

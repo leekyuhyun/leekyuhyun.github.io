@@ -32,17 +32,49 @@
 @theme {
   --font-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  /* 동글(Dongle) 폰트는 일반 고딕체에 비해 실제 글자 크기(자형)가 약 60% 수준으로 작기 때문에, 화면상 시각적 크기를 동글 폰트와 정확히 일치시키도록 0.6배(60%) 수치로 조정합니다. */
-  --text-xs: 0.6rem;
-  --text-sm: 0.7rem;
-  --text-base: 0.75rem;
-  --text-lg: 0.85rem;
-  --text-xl: 0.9rem;
-  --text-2xl: 1.05rem;
-  --text-3xl: 1.35rem;
-  --text-4xl: 1.65rem;
-  --text-5xl: 2.1rem;
-  --text-6xl: 2.7rem;
+  /* Compact type scale: keep dense resume-style content readable without oversized headings. */
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem;
+  --text-4xl: 1.875rem;
+  --text-5xl: 2.25rem;
+  --text-6xl: 2.75rem;
+}
+
+/* Shared component styles */
+@layer components {
+  .section-header {
+    @apply mb-8 md:mb-10;
+  }
+
+  .section-eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-400;
+  }
+
+  .section-title {
+    @apply mt-2 text-2xl font-bold tracking-tight text-slate-950 dark:text-white md:text-3xl;
+  }
+
+  .section-description {
+    @apply mt-2 max-w-md text-sm text-slate-500 dark:text-slate-400;
+  }
+
+  .content-section {
+    @apply scroll-mt-24 border-b border-slate-200 py-12 dark:border-slate-800 md:py-16;
+  }
+
+  .meta-label {
+    @apply text-xs font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 3px;
 }
 
 :root {
@@ -66,6 +98,11 @@ body {
   /* Firefox scrollbar */
   scrollbar-width: thin;
   scrollbar-color: #cbd5e1 transparent;
+}
+
+::selection {
+  color: #0f172a;
+  background: #bae6fd;
 }
 
 .dark body {
