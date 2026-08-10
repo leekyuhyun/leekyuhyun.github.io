@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  output: "export",
   images: {
-    unoptimized: true, // GitHub Pages는 백엔드 Node 서버가 없으므로 정적 이미지 최적화 옵션을 끕니다.
+    // GitHub Pages에는 이미지 최적화 서버가 없으므로 정적 이미지를 사용합니다.
+    unoptimized: true,
   },
 };
 

@@ -37,18 +37,18 @@ export default function Others() {
         <h2 className="section-title">이력과 활동</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
         {sections.map((section, idx) => {
           if (!section.items || section.items.length === 0) return null;
           const Icon = section.icon;
           return (
             <article
               key={idx}
-              className="group flex flex-col gap-3 border-t border-slate-300 dark:border-slate-700 pt-4"
+              className="group flex flex-col gap-3 border-t border-slate-300 pt-4 dark:border-slate-700"
             >
               <div className="flex items-center justify-between gap-2">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Icon className="w-4 h-4 text-sky-500 shrink-0" aria-hidden="true" />
+                <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
+                  <Icon className="size-4 shrink-0 text-sky-500" aria-hidden="true" />
                   {section.title}
                 </h3>
                 <span className="text-xs font-semibold text-slate-400 shrink-0">
@@ -60,7 +60,7 @@ export default function Others() {
                 {section.items.map((item, itemIdx) => (
                   <li
                     key={itemIdx}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 py-3 first:pt-1 last:pb-1"
+                    className="flex flex-col justify-between gap-1 py-3 first:pt-1 last:pb-1 sm:flex-row sm:items-center sm:gap-4"
                   >
                     <span className="text-base font-semibold text-slate-800 dark:text-slate-200 leading-snug">
                       {item.title}

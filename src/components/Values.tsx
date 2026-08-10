@@ -17,25 +17,23 @@ export default function Values() {
         </h2>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="grid gap-7 md:grid-cols-3 md:gap-8">
         {VALUES_DATA.map((value: ValueItem, index: number) => {
           const Icon = iconMap[value.iconName];
           return (
             <div
               key={index}
-              className="group grid grid-cols-[32px_1fr] gap-3 items-start"
+              className="group border-t border-slate-300 pt-5 dark:border-slate-700"
             >
-              <div className="w-8 h-8 rounded-full border border-slate-300 dark:border-slate-700 text-sky-600 dark:text-sky-400 flex items-center justify-center">
+              <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 text-sky-600 dark:border-slate-700 dark:text-sky-400">
                 <Icon className="w-4.5 h-4.5" aria-hidden="true" />
               </div>
-              <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug break-keep">
-                  {value.title}
-                </h3>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 leading-relaxed break-keep">
-                  {value.description}
-                </p>
-              </div>
+              <h3 className="text-lg font-bold leading-snug text-slate-900 dark:text-slate-100 break-keep">
+                {value.title}
+              </h3>
+              <p className="mt-2 text-sm leading-[1.75] text-slate-500 dark:text-slate-400 break-keep">
+                {value.description}
+              </p>
             </div>
           );
         })}
