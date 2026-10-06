@@ -17,6 +17,13 @@ export interface ProjectLink {
   url: string;
 }
 
+export interface ProjectAiUsage {
+  tools: string[];
+  task: string;
+  validation: string;
+  outcome: string;
+}
+
 export interface Project {
   title: string;
   category: string;
@@ -32,4 +39,5 @@ export interface Project {
   role?: string;
   tags: string[];
   contributions?: ProjectContribution[];
+  aiUsage?: ProjectAiUsage;
 }

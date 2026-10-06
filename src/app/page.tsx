@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Others from "../components/Others";
 import Values from "../components/Values";
 import Blog from "../components/Blog";
+import AiWorkflow from "../components/AiWorkflow";
 
 export default function Home() {
   return (
@@ -23,6 +24,10 @@ export default function Home() {
 
         <section id="values" className="content-section">
           <Values />
+        </section>
+
+        <section id="ai-workflow" className="content-section">
+          <AiWorkflow />
         </section>
 
         <section id="skills" className="content-section relative">

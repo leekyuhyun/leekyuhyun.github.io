@@ -4,6 +4,7 @@ import DetailSection from "./DetailSection";
 import ProjectContributions from "./ProjectContributions";
 import ProjectFeatures from "./ProjectFeatures";
 import ProjectImage from "./ProjectImage";
+import ProjectAiUsage from "./ProjectAiUsage";
 
 export default function ProjectDetails({ project }: { project: Project }) {
   return (
@@ -35,6 +36,7 @@ export default function ProjectDetails({ project }: { project: Project }) {
           </DetailSection>
         )}
         {project.contributions && project.contributions.length > 0 && <ProjectContributions contributions={project.contributions} />}
+        {project.aiUsage && <ProjectAiUsage aiUsage={project.aiUsage} />}
         {project.features && project.features.length > 0 && <ProjectFeatures features={project.features} />}
       </div>
     </div>

@@ -12,6 +12,7 @@ export default function Header() {
           <nav aria-label="주요 메뉴" className="hidden sm:flex items-center gap-1 text-sm font-semibold text-slate-500 dark:text-slate-400">
             <a href="#projects" className="px-3 py-2 rounded-lg hover:text-slate-950 dark:hover:text-white">프로젝트</a>
             <a href="#values" className="px-3 py-2 rounded-lg hover:text-slate-950 dark:hover:text-white">업무 방식</a>
+            <a href="#ai-workflow" className="px-3 py-2 rounded-lg hover:text-slate-950 dark:hover:text-white">AI 활용</a>
             <a href="#skills" className="px-3 py-2 rounded-lg hover:text-slate-950 dark:hover:text-white">기술</a>
             <a href="#blog" className="px-3 py-2 rounded-lg hover:text-slate-950 dark:hover:text-white">블로그</a>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-3 py-2 rounded-lg hover:text-slate-950 dark:hover:text-white">이력서</a>

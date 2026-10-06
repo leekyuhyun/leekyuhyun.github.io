@@ -64,7 +64,13 @@ export const PROJECTS_DATA: Project[] = [
         solution: "Express와 node-cron으로 수집 워커를 구성하고 Cheerio 본문 스크래핑, Gemini 구조화 요약·태그 분류, Supabase 적재를 연결했습니다. 기사 URL 선조회와 UNIQUE 제약조건·upsert도 함께 적용했습니다.",
         result: "신규 기사만 수집·요약하도록 데이터 흐름을 구성하고, 호출 간격 제어로 외부 API 제한에 대응했습니다."
       }
-    ]
+    ],
+    aiUsage: {
+      tools: ["Claude Max"],
+      task: "MSW 모킹 구조와 뉴스 워커의 예외 상황을 탐색하고, 반복되는 테스트·문서 초안을 작성하는 데 활용했습니다.",
+      validation: "실제 API 계약과 타입 정의를 기준으로 제안 내용을 검토하고, 중복 기사·Rate Limit·오류 응답 시나리오를 직접 테스트했습니다.",
+      outcome: "구현 대안을 빠르게 비교하고 반복 작업을 줄여 개발 환경과 데이터 파이프라인의 완성도에 집중했습니다."
+    }
   },
   {
     title: "아이케어 AI (iCare AI) - 키즈노트",
@@ -118,7 +124,13 @@ export const PROJECTS_DATA: Project[] = [
         solution: "경량 헬스체크 API를 구현하고 외부 모니터링 서비스가 주기적으로 상태를 확인하도록 구성했습니다.",
         result: "데모 환경에서 첫 요청 시 발생하는 대기 시간을 완화했습니다."
       }
-    ]
+    ],
+    aiUsage: {
+      tools: ["Gemini Pro"],
+      task: "Firebase 인증 흐름과 Express 입력 검증·오류 처리 구조의 초안을 설계하고 API 문서 항목을 정리하는 데 활용했습니다.",
+      validation: "Firebase 공식 동작 방식과 실제 토큰·요청 데이터를 기준으로 생성 결과를 확인하고, 실패 응답과 Batch Write 흐름을 직접 검증했습니다.",
+      outcome: "짧은 공모전 기간에 인증과 API 품질 기준을 빠르게 정리하고 핵심 기능 구현 시간을 확보했습니다."
+    }
   },
   {
     title: "범죄 취약 계층의 초동 대응을 위한 스마트 장치 및 AI 기반 실시간 대응 서비스",
@@ -172,6 +184,12 @@ export const PROJECTS_DATA: Project[] = [
         solution: "반복 UI를 기능 단위 컴포넌트로 분리하고 API 호출을 서비스 계층으로 격리했습니다. AI 분석 히스토리에 최신순 정렬·페이지네이션·UTC→KST 변환도 적용했습니다.",
         result: "중복 코드를 줄이고 기기·관제 기록을 일관된 방식으로 조회·관리할 수 있게 했습니다."
       }
-    ]
+    ],
+    aiUsage: {
+      tools: ["Gemini Pro"],
+      task: "WebSocket 상태별 UI와 지도·관제 화면의 예외 시나리오를 정리하고 반복 컴포넌트의 리팩터링 방향을 탐색하는 데 활용했습니다.",
+      validation: "실제 이벤트 데이터와 연결 대기·실패·종료 상태를 대조하고, 지도 좌표와 시간 변환 결과를 화면에서 직접 확인했습니다.",
+      outcome: "복잡한 실시간 상태를 빠르게 구조화하고 관제 화면의 예외 처리와 유지보수성 개선에 집중했습니다."
+    }
   },
 ];
