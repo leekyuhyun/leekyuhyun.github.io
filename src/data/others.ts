@@ -25,8 +25,8 @@ export const OTHERS_DATA: OthersData = {
       period: "2020.03 ~ 2026.02",
     },
     {
-      title: "안양대학교 지식재산융합과정 이수",
-      period: "2024.09 ~ 2026.02",
+      title: "시흥매화고등학교 졸업",
+      period: "2017.03 ~ 2020.02",
     }
   ],
   military: [
@@ -48,8 +48,5 @@ export const OTHERS_DATA: OthersData = {
     {
       title: "NET 챌린지 캠프 시즌 12 | 주최: 과학기술정보통신부 · 주관: NIA, KOREN",
     },
-    {
-      title: "안양대·대만 명전대 연합 해외 IP-PBL 워크숍 및 기업 탐방",
-    }
   ]
 };
